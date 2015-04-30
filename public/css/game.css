@@ -1,0 +1,30 @@
+.world {
+    background-color: blue;
+}
+
+.map {
+    border: 1px solid black;
+    background-color: pink;
+    position: relative;
+    margin: 0 auto;
+}
+
+.character {
+    background-image: url('/images/logo.png');
+    background-size: contain;
+    border: 1px solid black;
+    position: relative;
+    border-radius: 50%;
+    -webkit-transition: border-radius 250ms ease-out 250ms;
+    -moz-transition: border-radius 250ms ease-out 250ms;
+    -o-transition: border-radius 250ms ease-out 250ms;
+    transition: border-radius 250ms ease-out 250ms;
+}
+
+.character:hover {
+    border-radius: 0;
+    -webkit-transition: border-radius 250ms ease-out 250ms;
+    -moz-transition: border-radius 250ms ease-out 250ms;
+    -o-transition: border-radius 250ms ease-out 250ms;
+    transition: border-radius 250ms ease-out 250ms;
+}

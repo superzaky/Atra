@@ -1,0 +1,27 @@
+body {
+    background: black;
+}
+
+.navbar {
+    opacity: 0.8;
+}
+
+h3 {
+    font-size: 37px;
+}
+
+video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    opacity: 0.6;
+}
+
+main {
+    color: #efefef;
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <% include ../_partials/header.ejs %>
+    <link rel='stylesheet' href='/css/chat.css'>
+    <script type='text/javascript' src='/javascript/chat.js'></script>
+</head>
+<body ng-app=''>
+    <% include ../_partials/navbar.ejs %>
+    <ul id='chatlog' class='content-absolute'></ul>
+    <div id='chatbox' class='input-group'>
+        <span class='input-group-addon'>Message</span>
+        <input type='text' class='form-control'>
+    </div>
+</body>
+</html>
