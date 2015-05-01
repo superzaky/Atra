@@ -25,7 +25,7 @@
                 </li>
                 <% if (typeof user == 'undefined' || user == null) { %>
                     <li>
-                        <button class='navbar-btn btn-primary btn btn-default' data-toggle='modal' data-target='#login-modal'>Sign in</button>
+                        <button class='navbar-btn btn-primary btn' data-toggle='modal' data-target='#login-modal'>Sign in</button>
                     </li>
                 <% } else { %>
                     <li class='dropdown'>
@@ -39,7 +39,7 @@
                         <button id='online-button' class='navbar-btn btn btn-default' data-toggle='modal' data-target='#online-modal'>Online</button>
                     </li>
                     <li>
-                        <button class='navbar-btn btn-primary btn btn-default' onclick='window.location.href="/logout"'>Log out</button>
+                        <button class='navbar-btn btn-primary btn' onclick='window.location.href="/logout"'>Log out</button>
                         <input id='current-user' type='hidden' value='<%= user.username %>'/>
                     </li>
                 <% } %>

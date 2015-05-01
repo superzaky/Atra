@@ -1,15 +1,39 @@
+/*
+    Colors:
+    primary-text-color: #D8D8D8;
+    secondary-text-color: #9D9D9D;
+    code-text-color: #A26EFF;
+    btn-primary-color: #38285B;
+    btn-default-color: #222;
+    secondary-background-color: #1A1A1A or #111;
+    border-color: #080808;
+*/
+
 * {
     margin: 0px;
     padding: 0px;
 }
 
+body {
+    background-color: #222;
+}
+
 main {
+    color: #D8D8D8;
     margin-top: 50px;
     margin-left: 50px;
 }
 
+code {
+    color: #A26EFF;
+    background-color: #222;
+    border: 1px solid black;
+}
+
 .navbar {
+    opacity: 0.9;
     margin-bottom: 0;
+    border-radius: 0;
 }
 
 .navbar-btn {
@@ -20,7 +44,7 @@ main {
     height: 54px;
     padding: 2px;
     margin: 0;
-    background: #989898;
+    background: #38285B;
     border-radius: 50%;
     position: absolute;
     left: 50px;
@@ -33,7 +57,7 @@ main {
 }
 
 .navbar-brand:hover {
-    background: white !important;
+    background: #38285B !important;
     top: 10px;
     -webkit-transition: top 250ms ease-out 250ms;
     -moz-transition: top 250ms ease-out 250ms;
@@ -47,23 +71,98 @@ main {
     border-radius: 50%;
 }
 
+.btn-default {
+    background-color: #222;
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.btn-default:hover, .btn-default:focus {
+    background-color: #111;
+    border-color: #080808;
+    color: #D8D8D8;
+}
+
+.btn-primary {
+    background-color: #38285B;
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #1F0F42;
+    border-color: #080808;
+    color: #D8D8D8;
+}
+
+.dropdown-menu {
+    background-color: #222;
+}
+
+.dropdown-menu > li > a {
+    color: #9D9D9D;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #111;
+    color: #D8D8D8;
+}
+
+.dropdown-menu .divider {
+    background-color: #080808;
+}
+
+.modal-header {
+    color: #D8D8D8;
+    border-color: #080808;
+}
+
+.modal-content {
+    background-color: #222;
+}
+
+.modal-footer {
+    border-color: #080808;
+}
+
 .modal-fullscreen .modal-dialog {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .modal-fullscreen .modal-content {
-  height: 100%;
-  border-radius: 0;
-  overflow: auto;
+    height: 100%;
+    border-radius: 0;
+    overflow: auto;
 }
 
-@media (min-width: 768px) {
-    #login-form {
-        margin-left: 25%;
-    }
+.close, .close:hover, .close:focus {
+    color: white;
+    text-shadow: none;
+}
+
+.form-control {
+    color: #9D9D9D;
+    background-color: #1A1A1A;
+    border-color: #080808;
+}
+
+.input-group-addon {
+    background-color: #111;
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.table-striped > tbody > tr > td, .table-striped > thead > tr > th {
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #1A1A1A;
+    color: #D8D8D8;
 }
 
 .content-absolute {
@@ -75,4 +174,49 @@ main {
     z-index: -1;
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+
+#video-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1000;
+}
+
+#video-bg > video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1000;
+    opacity: 0.6;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #video-bg > video {
+        height: 300%;
+        top: -100%;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #video-bg > video {
+        width: 300%;
+        left: -100%;
+    }
+}
+
+@supports (object-fit: cover) {
+    #video-bg > video {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }

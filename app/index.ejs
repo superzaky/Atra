@@ -6,11 +6,13 @@
 </head>
 <body ng-app=''>
     <% include _partials/navbar.ejs %>
-    <video autoplay loop>
-        <source src="/videos/titlescreen.mp4" type="video/mp4">
-    </video>
+    <div id="video-bg">
+        <video class='bg' autoplay loop muted>
+            <source src='https://drive.google.com/uc?export=download&id=0B421haA8UU_3c3RnNGlVMmFXQ3M' type='video/mp4'>
+        </video>
+    </div>
     <main>
-        <h3>Project Atra</h3>
+        <h1>Project Atra</h1>
         <p>Please sign in to make use of the realtime features of this website.</p>
         <p>After signing in, chat with others by clicking on <code>Admin/Chat</code></p>
     </main>

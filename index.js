@@ -1,4 +1,5 @@
 var express = require('express');
+var favicon = require('serve-favicon');
 var session = require('express-session')
 var bodyParser = require('body-parser');
 var router = express.Router();
@@ -19,9 +20,10 @@ var sessionMiddleware = session({
 
 
 app.use(sessionMiddleware);
-app.use(bodyParser.json());                        
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 'extended' : true }));
 app.use(express.static(__dirname + '/public'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('views', __dirname + '/app');
 process.env.root = __dirname;
 
