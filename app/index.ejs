@@ -3,14 +3,14 @@
 <head>
     <% include _partials/header.ejs %>
     <link rel='stylesheet' href='/css/index.css'>
+    <script type='text/javascript' src='/javascript/index.js'></script>
 </head>
 <body ng-app=''>
-    <% include _partials/navbar.ejs %>
-    <div id="video-bg">
-        <video class='bg' autoplay loop muted>
-            <source src='https://drive.google.com/uc?export=download&id=0B421haA8UU_3c3RnNGlVMmFXQ3M' type='video/mp4'>
-        </video>
+    <div id='background'>
+        <img id='hill-night' src='/images/hill-night.png'/>
+        <img id='clouds-night' class='parallax-bg' src='/images/clouds-night.jpg'/>
     </div>
+    <% include _partials/navbar.ejs %>
     <main>
         <h1>Project Atra</h1>
         <p>Please sign in to make use of the realtime features of this website.</p>

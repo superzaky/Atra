@@ -176,7 +176,6 @@ code {
     overflow-y: hidden;
 }
 
-
 #video-bg {
     position: fixed;
     top: 0;
@@ -184,7 +183,7 @@ code {
     bottom: 0;
     left: 0;
     overflow: hidden;
-    z-index: -1000;
+    z-index: -1;
 }
 
 #video-bg > video {
