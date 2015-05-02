@@ -14,7 +14,7 @@ $(document).on('keypress', '#chatbox', function (e)
 socket.on('server-message', function (data)
 {
     var $message = $("<li class='message'></li>");
-    $message.text(data.message);
+    $message.html(data.message);
     $message.prepend("<strong class='label label-default'>" + data.user + "</strong> ");
     $('#chatlog').append($message);
     $('#chatlog').scrollTop($('#chatlog')[0].scrollHeight);

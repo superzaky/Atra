@@ -11,7 +11,7 @@ $(document).ready(function ()
     $image2.css('left', x2);
     $background.append($image2);
 
-    setInterval(parallax, 60);
+    setInterval(parallax, 0);
 });
 
 $(window).resize(function()
@@ -24,9 +24,9 @@ function parallax ()
 {
     if (x1 >= width) {
         x1 = 0;
-        x2 = -width;
+        x2 = -width + 1;
     }
 
-    $image1.css('left', x1++);
-    $image2.css('left', x2++);
+    $image1.css('left', x1+=0.25);
+    $image2.css('left', x2+=0.25);
 }
