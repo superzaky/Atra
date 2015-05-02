@@ -1,7 +1,5 @@
-@media (min-width: 768px) {
-    #login-form {
-        margin-left: 25%;
-    }
+body {
+    background-color: black;
 }
 
 #background {
@@ -29,9 +27,26 @@
 
 #hill-night {
     z-index: -1;
-
 }
 
 #clouds-night {
     z-index: -2;
+}
+
+@media screen and (orientation:portrait) {
+    #hill-night {
+        z-index: -1;
+        bottom: 0px;
+    }
+
+    #clouds-night {
+        z-index: -2;
+        bottom: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    #login-form {
+        margin-left: 25%;
+    }
 }

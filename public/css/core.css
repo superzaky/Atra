@@ -12,16 +12,16 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Cuprum';
 }
 
 body {
-    background-color: #222;
+    background-color: #111;
 }
 
 main {
     color: #D8D8D8;
-    margin-top: 50px;
-    margin-left: 50px;
+    margin: 50px
 }
 
 code {
