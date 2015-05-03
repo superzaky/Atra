@@ -1,36 +1,42 @@
-var mongoose = require('mongoose');
+var MongoDocument = require(process.env.root + '/lib/MongoDocument');
+var validator = require('validator');
 var sha1 = require('sha1');
 
 var properties = {
-    'first_name' : String,
-    'last_name' : String,
-    'birth_date' : String,
-    'username' : String,
-    'password' : String
+    "email": String,
+    "password": String,
+    "first_name": String,
+    "last_name": String
 }
 
-var Schema = new mongoose.Schema(properties)
+var methods = {
+    "getFullName": function () {
+        return this.first_name + ' ' + this.last_name;
+    },
 
-Schema.methods.getFullName = function () {
-    return this.first_name + this.last_name;
-}
+    "setPassword": function (password) {
+        this.password = sha1(password);
+    },
 
-Schema.methods.setPassword = function (password) {
-    this.password = sha1(password);
-}
+    "hasValidEmail": function () {
+        return validator.isEmail(this.email);
+    },
 
-Schema.methods.isValid = function () {
-    for (var key in properties) {
-        if(typeof this[key] === 'undefined' || this[key] === null) return false;
+    "setValues": function (values) {
+        for (var key in values) {
+            if (key === 'email') {
+                this[key] = values[key].toLowerCase();
+            } else if (key === 'password') {
+                this.setPassword(values[key]);
+            } else {
+                this[key] = values[key];
+            }
+        }
+
+        return this;
     }
-
-    return true;
 }
 
-Schema.methods.setValues = function (values) {
-    for (var key in values) {
-        this[key] = values[key];
-    }
-}
+var statics = {};
 
-module.exports = mongoose.model('User', Schema);
+module.exports = MongoDocument('User', properties, methods, statics);

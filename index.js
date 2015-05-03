@@ -65,4 +65,6 @@ io.on('connection', function (socket) {
 
 
 mongoose.connect(app.get('mongodb'));
-server.listen(app.get('port'));
+server.listen(app.get('port'), function () {
+    console.log('Server is listening at port ' + app.get('port'));
+});

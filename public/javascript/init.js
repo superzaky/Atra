@@ -10,19 +10,10 @@ socket.on('online', function (data)
     var $tbody = $('#table-currently-online tbody');
     var rows = '';
 
-    for (var i = 0; i < data.users.length; i++) {
-        rows += '<tr><td>' + data.users[i] + '</td></tr>';
-    };
+    for (var i = 0; i < data.length; i++) {
+        rows += '<tr><td><strong>' + data[i].name + '</strong>' + ' <small>(' + data[i].email + ')</small></td></tr>';
+    }
 
     $tbody.html('');
     $tbody.append(rows);
-
-    if (data.users.length > 1 && !$.inArray($('#current-user').val(), data.users)) {
-        $('#online-button').addClass('btn-info');
-    }
-});
-
-$(document).on('click', '#online-button', function ()
-{
-    $('#online-button').removeClass('btn-info');
 });

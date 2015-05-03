@@ -3,7 +3,7 @@ module.exports = function (io, socket, clients)
     socket.on('client-message', function (data)
     {
         var user = socket.request.session.user;
-        var uid = user.username;
+        var uid = user.email;
         sendMessage(io, clients[uid], 'general', data.message);
     });
 };

@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.1.2",
-  "description": "A sample Node.js app using Express 4",
+  "name": "Atra",
+  "version": "0.2.0",
+  "description": "Project Atra, a realtime portfolio",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -14,14 +14,15 @@
     "ejs": "2.2.4",
     "mongoose": "3.8.22",
     "sha1": "1.1.0",
-    "serve-favicon" : "2.2.0"
+    "serve-favicon": "2.2.0",
+    "validator": "3.39.0"
   },
   "engines": {
     "node": "0.10.x"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/MISTAegis/Atra"
   },
   "keywords": [
     "node",

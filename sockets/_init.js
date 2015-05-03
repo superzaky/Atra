@@ -10,7 +10,7 @@ module.exports = function (io, socket, clients)
         return socket;
     }
 
-    var uid = user.username;
+    var uid = user.email;
     socket.uid = uid;
     socket.name = user.first_name + ' ' + user.last_name;
     joinRoom(socket, 'general');
@@ -22,7 +22,12 @@ module.exports = function (io, socket, clients)
         delete clients[uid];
     });
 
-    io.sockets.in('general').emit('online', { 'users' : Object.keys(clients) });
+    var online = [];
+    for (var key in clients) {
+        online.push({ "email" : key, "name" : clients[key].name });
+    }
+
+    io.sockets.in('general').emit('online', online);
     socket.clients = clients;
     return socket;
 };

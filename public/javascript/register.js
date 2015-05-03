@@ -1,17 +1,15 @@
 $(document).ready(function ()
 {
-    $('#signin-form').submit(function (e)
+    $('#register-form').submit(function (e)
     {
         e.preventDefault();
+
         post(this)
         .done(function (data) {
-            if (data.redirect) {
-                window.location.href = data.redirect;
-            }
+            if (data) window.location = '/';
         })
         .always(function (response) {
             if (response.status.toString[0] != 2) notify(response.responseText);
-            $('#login-modal .modal-content').effect('shake');
         });
     });
 });
