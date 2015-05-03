@@ -8,7 +8,11 @@
                 <span class='icon-bar'></span>
             </button>
             <a class='navbar-brand' href='/'>
-                <img src='/images/logo.png'>
+                <% if (typeof user == 'undefined' || user == null) { %>
+                    <img src='/images/logo.png'>
+                <% } else { %>
+                    <img src='<%= user.image %>'>
+                <% } %>
             </a>
         </div>
 

@@ -7,19 +7,19 @@ function post(form)
     });
 }
 
-function notify(message)
+function notify(message, type)
 {
-    if ($('.single-notification').length) return;
-
-    $notification = $(
+    var $notification = $(
         '<div class="alert single-notification">' +
         '<a href="#" class="close" data-dismiss="alert">&times;</a>' + 
-        message + '</div>'
+        '<span class="label error-color">' + type + '</span> ' + message + '</div>'
     );
 
-    $('body').prepend($notification);
+    $('body').append($notification.hide().fadeIn(500));
 
-    setTimeout(function() {
-        $notification.remove();
-    }, 3000);
+    setTimeout(function () {
+        $notification.fadeOut(500, function () {
+            $(this).remove();
+        });
+    }, 4000);
 }

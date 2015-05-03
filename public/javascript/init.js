@@ -11,7 +11,8 @@ socket.on('online', function (data)
     var rows = '';
 
     for (var i = 0; i < data.length; i++) {
-        rows += '<tr><td><strong>' + data[i].name + '</strong>' + ' <small>(' + data[i].email + ')</small></td></tr>';
+        rows += '<tr><td class="col-xs-1"><img src="' + data[i].image + '" width="40" height="40"></td>' + 
+        '<td class="col-xs-11"><strong>' + data[i].name + '</strong>' + ' <small>(' + data[i].email + ')</small></td></tr>';
     }
 
     $tbody.html('');

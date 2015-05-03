@@ -13,6 +13,7 @@ module.exports = function (io, socket, clients)
     var uid = user.email;
     socket.uid = uid;
     socket.name = user.first_name + ' ' + user.last_name;
+    socket.image = user.image;
     joinRoom(socket, 'general');
     clients[uid] = socket;
 
@@ -24,7 +25,7 @@ module.exports = function (io, socket, clients)
 
     var online = [];
     for (var key in clients) {
-        online.push({ "email" : key, "name" : clients[key].name });
+        online.push({ "email" : key, "name" : clients[key].name, "image" : clients[key].image });
     }
 
     io.sockets.in('general').emit('online', online);
