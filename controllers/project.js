@@ -1,6 +1,8 @@
 module.exports =
 {
     default: function (req, res, args) {
-        res.render('admin/projects', { 'user' : req.session.user });
+       // res.render('/projects');
+       res.redirect('/projects');
+       // res.location('/projects');
     }
 }

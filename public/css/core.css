@@ -70,6 +70,10 @@ code {
     transition: top 250ms ease-out 250ms;
 }
 
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background-color:#9d9d9d;
+}
+
 .navbar-brand img {
     width: 54px;
     height: 54px;
