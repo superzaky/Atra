@@ -29,7 +29,7 @@ The app has a couple of API exposed functionalities. You can use these through a
 #### Add user
     POST http://localhost:5000/api/users
     {
-        'username' : 'larry',
+        'email' : 'larry@example.com',
         'first_name' : 'Larry',
         'last_name' : 'Page',
         'password' : 'open'

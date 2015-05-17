@@ -6,10 +6,11 @@ $(document).ready(function ()
 
         post(this)
         .done(function (data) {
-            if (data) window.location = '/';
-        })
-        .always(function (response) {
-            if (response.status.toString[0] != 2) notify(response.responseText, 'Warning');
+            notify('Successfully registered! You will be redirected to the homepage shortly...', 'Success');
+
+            setTimeout(function () {
+                window.location = '/';
+            }, 4000);
         });
     });
 });

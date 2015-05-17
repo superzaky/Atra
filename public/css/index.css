@@ -2,29 +2,6 @@ body {
     background-color: black;
 }
 
-#background {
-    width: 100%; 
-    height: 100%; 
-    position: absolute;
-    left: 0; 
-    top: 0; 
-    bottom: 0;
-    right: 0;
-    z-index: -10;
-    overflow: hidden;
-}
-
-#background > img {
-    position: absolute;
-    width: 100%;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 #hill-night {
     z-index: -1;
 }
@@ -33,7 +10,7 @@ body {
     z-index: -2;
 }
 
-@media screen and (orientation:portrait) {
+@media screen and (orientation:portrait), (max-aspect-ratio: 16/9) {
     #hill-night {
         z-index: -1;
         bottom: 0px;
@@ -42,11 +19,5 @@ body {
     #clouds-night {
         z-index: -2;
         bottom: 50px;
-    }
-}
-
-@media (min-width: 768px) {
-    #login-form {
-        margin-left: 25%;
     }
 }

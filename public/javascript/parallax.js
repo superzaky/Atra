@@ -1,4 +1,4 @@
-$(document).ready(function ()
+$(window).load(function ()
 {
     $background = $('#background');
     $image1 = $('#background').find('.parallax-bg');
