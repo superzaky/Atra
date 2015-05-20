@@ -4,10 +4,31 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Project title</h4>
+        <h4 class="modal-title" id="myModalLabel">Add project</h4>
       </div>
       <div class="modal-body">
-        ...
+        <form method='post' action='/api/projects'>
+          <div class="form-group">
+            <label for="project-name" class="control-label">Project name:</label>
+            <input type="text" class="form-control" id="project-name">
+          </div>
+          <div class="form-group">
+            <label for="project-text" class="control-label">Project content:</label>
+            <textarea class="form-control" id="project-text"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="project-image" class="control-label">Project image:</label>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Browse&hellip; <input type="file" multiple>
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+          </div>
+
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

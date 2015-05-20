@@ -6,8 +6,10 @@ module.exports =
 	{ 'resource' : '/logout',     		'method' : 'get',  'controller' : 'auth',  		'action' : 'unauthorize', 'args' : { } },
 	{ 'resource' : '/register',   		'method' : 'get',  'controller' : 'auth',  		'action' : 'register',    'args' : { } },
 	{ 'resource' : '/projects', 		'method' : 'get',  'controller' : 'project',  	'action' : 'default',     'args' : { } },
+	{ 'resource' : '/api/projects',  	'method' : 'post', 'controller' : 'project', 	'action' : 'add',         'args' : { } },
 	{ 'resource' : '/admin/chat', 		'method' : 'get',  'controller' : 'chat',  		'action' : 'default',     'args' : { } },
 	{ 'resource' : '/admin/game', 		'method' : 'get',  'controller' : 'game',  		'action' : 'default',     'args' : { } },
 	{ 'resource' : '/api/users',  		'method' : 'get',  'controller' : 'user',  		'action' : 'list',        'args' : { } },
 	{ 'resource' : '/api/users',  		'method' : 'post', 'controller' : 'user', 		'action' : 'add',         'args' : { } }
 ];
+				
