@@ -10,7 +10,6 @@ $(document).ready(function ()
             }
         })
         .always(function (response) {
-            if (response.status.toString[0] != 2) notify(response.responseText, 'Warning');
             $('#login-modal .modal-content').effect('shake');
         });
     });

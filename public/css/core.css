@@ -268,3 +268,12 @@ code {
 .error-color {
     color: #F25F5F;
 }
+
+.success-color {
+    color: #60FF00;
+}
+
+.form-control::-webkit-input-placeholder { color: #505050; }
+.form-control:-moz-placeholder { color: #505050; }
+.form-control::-moz-placeholder { color: #505050; }
+.form-control:-ms-input-placeholder { color: #505050; }

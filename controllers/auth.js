@@ -11,7 +11,7 @@ module.exports =
         function (err, doc) {
             if (!doc) return res.status(400).send('Invalid email or password');
             req.session.user = doc.sanitize(['password', '__v']);
-            res.json({ 'redirect' : '/' });
+            res.json({ 'redirect' : '/' , 'session' : req.sessionID });
         });
     },
 

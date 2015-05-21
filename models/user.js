@@ -26,6 +26,8 @@ var methods = {
 
     "setValues": function (values) {
         for (var key in values) {
+            if (typeof values[key] === 'string' && values[key].trim() === '') continue;
+
             if (key === 'email') {
                 this[key] = values[key].toLowerCase();
                 this['image'] = 'https://www.gravatar.com/avatar/' + md5(this[key]) + '?d=identicon&s=512';

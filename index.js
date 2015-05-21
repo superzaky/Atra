@@ -1,4 +1,5 @@
 var express = require('express');
+var multer = require('multer');
 var favicon = require('serve-favicon');
 var session = require('express-session')
 var bodyParser = require('body-parser');
@@ -18,7 +19,7 @@ var sessionMiddleware = session({
     'saveUninitialized' : true
 });
 
-
+app.use(multer({ dest: './uploads/' }));
 app.use(sessionMiddleware);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 'extended' : true }));
