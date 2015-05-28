@@ -10,7 +10,7 @@ $(document).ready(function ()
 {   
     var form = {};
     form.action = "/api/projects";
-    form.type = "GET";
+    form.method = "GET";
 
     post(form)
     .done(function (data) {
@@ -19,10 +19,10 @@ $(document).ready(function ()
             $('div.current-projects').append('<h1>'+data[i].name+'</h1>');
             if(data[i].content != undefined) $('div.current-projects').append('<p>'+data[i].content+'</p>');
             if(data[i].image != undefined) 
-                $('div.current-projects').append('<img src=data:image/gif;base64,'+data[i].image+'>');
+                $('div.current-projects').append('<img src='+data[i].image+'>');
         }
 
-    });
+    }); // fix later door in default action
 
 
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
@@ -39,7 +39,7 @@ $(document).ready(function ()
     $('#project-form').submit(function (e)
     {
         e.preventDefault();
-        post(this)
+        post(this, false, false)
         .done(function (data) {
             notify('Changes have been saved succesfully', 'Success');
         });

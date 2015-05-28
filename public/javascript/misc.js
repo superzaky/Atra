@@ -1,12 +1,29 @@
-function post(form)
+function post(form, contentType, processData)
 {
-    return $.ajax({
+    var options = {
         url: form.action,
         type: form.method,
-        data: $(form).serialize()
-    })
+        processData: true,
+        cache: false
+    };
+
+    if ($.inArray(form.method.toLowerCase(), ['get', 'delete']) === -1 && form.enctype == 'multipart/form-data') {
+        options.data = new FormData(form)
+    } else {
+        options.data = $(form).serialize();
+    }
+
+    if (typeof contentType != 'undefined') {
+        options.contentType = contentType;
+    }
+
+    if (typeof processData != 'undefined') {
+        options.processData = processData;
+    }
+
+    return $.ajax(options)
     .always(function (response) {
-        if (typeof response.status !== 'undefined' && response.status.toString[0] != 2) {
+        if (typeof response.status != 'undefined' && response.status.toString[0] != 2) {
             notify(response.responseText, 'Warning');
         }
     });

@@ -1,9 +1,9 @@
 var Project = require(process.env.root + '/models/project');
-var fs = require('fs');
+
 module.exports =
 {
     default: function (req, res, args) {
-       res.render('projects');
+       res.render('projects', { 'user' : req.session.user });
     },
 
     // api
@@ -14,17 +14,15 @@ module.exports =
     },
 
     add: function (req, res, args) {
-    	if (req.get('content-type').indexOf('multipart/form-data') === false) {
-    		return res.status(406).send('Unacceptable MIME type');
-    	}
-        
+        if (typeof req.session.user === 'undefined' || req.session.user === null) {
+            return res.status(401).send('Unauthorized');
+        }
+
         var project = new Project();
         var required = ['name'];
 
         if (typeof req.files.image != 'undefined') {
-	        fs.readFile(req.files.image.path, function (err, data) {
-       			project.setValues({ "image": data });
-	        });
+       		project.setValues({ "image": req.files.image });
     	}
 
         project.setValues(req.body);
