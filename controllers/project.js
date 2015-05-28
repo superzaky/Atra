@@ -17,7 +17,7 @@ module.exports =
     	if (req.get('content-type').indexOf('multipart/form-data') === false) {
     		return res.status(406).send('Unacceptable MIME type');
     	}
-
+        
         var project = new Project();
         var required = ['name'];
 
