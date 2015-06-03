@@ -8,23 +8,6 @@ $(document).on('change', '.btn-file :file', function() {
 
 $(document).ready(function ()
 {   
-    // var form = {};
-    // form.action = "/api/projects";
-    // form.method = "GET";
-
-    // post(form)
-    // .done(function (data) {
-
-    //     for (var i = 0; i < data.length; i++) {
-    //         $('div.current-projects').append('<h1>'+data[i].name+'</h1>');
-    //         if(data[i].content != undefined) $('div.current-projects').append('<p>'+data[i].content+'</p>');
-    //         if(data[i].image != undefined) 
-    //             $('div.current-projects').append('<img src='+data[i].image+'>');
-    //     }
-
-    // }); // fix later door in default action
-
-
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         var input = $(this).parents('.input-group').find(':text');
         var log = numFiles > 1 ? numFiles + ' files selected' : label;
