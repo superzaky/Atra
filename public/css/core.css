@@ -70,6 +70,10 @@ code {
     transition: top 250ms ease-out 250ms;
 }
 
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background-color:#9d9d9d;
+}
+
 .navbar-brand img {
     width: 54px;
     height: 54px;
@@ -98,6 +102,26 @@ code {
     background-color: #1F0F42;
     border-color: #080808;
     color: #D8D8D8;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
 
 .dropdown-menu {

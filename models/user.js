@@ -26,7 +26,7 @@ var methods = {
 
     "setValues": function (values) {
         for (var key in values) {
-            if (values[key].trim() === '') continue;
+            if (typeof values[key] === 'string' && values[key].trim() === '') continue;
 
             if (key === 'email') {
                 this[key] = values[key].toLowerCase();
