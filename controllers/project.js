@@ -3,7 +3,9 @@ var Project = require(process.env.root + '/models/project');
 module.exports =
 {
     default: function (req, res, args) {
-       res.render('projects', { 'user' : req.session.user });
+        Project.fetchAll({}, function (err, docs) {
+            res.render('projects', { 'user' : req.session.user, 'projects' : docs });
+        });
     },
 
     // api
