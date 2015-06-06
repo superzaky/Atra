@@ -20,6 +20,11 @@ var methods = {
             if (typeof values[key] === 'string' && values[key].trim() === '') continue;
 
             if (key === 'image') {
+                if(values['image']['size'] > 2) {
+                    return false;
+                    break;
+                }
+                
                 var image = values[key];
 
                 fs.readFile(image.path, function (err, data) {

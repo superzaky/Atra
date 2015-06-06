@@ -16,9 +16,9 @@ module.exports =
     },
 
     add: function (req, res, args) {
-        if (typeof req.session.user === 'undefined' || req.session.user === null) {
-            return res.status(401).send('Unauthorized');
-        }
+        // if (typeof req.session.user === 'undefined' || req.session.user === null) {
+        //     return res.status(401).send('Unauthorized');
+        // }
 
         var project = new Project();
         var required = ['name'];
@@ -27,7 +27,10 @@ module.exports =
        		project.setValues({ "image": req.files.image });
     	}
 
-        project.setValues(req.body);
+        //project.setValues(req.body);
+        if (!project.setValues(req.body)) {
+            return res.status(412).send('Your image file was larger than 1mb ');
+        }
 
         if (!project.hasProperties(required)) {
         	return res.status(412).send('Projects must have the following properties: ' + required.join(', '));
@@ -41,5 +44,14 @@ module.exports =
                 res.status(201).json(project.sanitize(['__v']));
             });
         });
-    }
+    },
+
+    delete: function (req, res, args) {
+        var project = new Project();
+        project.setValues(req.body);
+        console.log(project._id);
+        project.remove({ _id: project._id });
+        
+        
+    },
 }

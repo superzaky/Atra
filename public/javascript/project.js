@@ -27,4 +27,6 @@ $(document).ready(function ()
             notify('Changes have been saved succesfully', 'Success');
         });
     });
+
+    
 });
