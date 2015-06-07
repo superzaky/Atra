@@ -20,10 +20,12 @@ var methods = {
             if (typeof values[key] === 'string' && values[key].trim() === '') continue;
 
             if (key === 'image') {
-                if(values['image']['size'] > 2) {
-                    return false;
-                    break;
-                }
+
+                // niet hier checken for filesize, is controller logica
+                // if(values['image']['size'] > 2) {
+                //     return false;
+                //     break;
+                // }
                 
                 var image = values[key];
 

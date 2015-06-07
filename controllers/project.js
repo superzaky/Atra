@@ -24,6 +24,7 @@ module.exports =
         var required = ['name'];
 
         if (typeof req.files.image != 'undefined') {
+            // plaats hier code om req.files.image grootte te checken
        		project.setValues({ "image": req.files.image });
     	}
 
@@ -31,6 +32,14 @@ module.exports =
         if (!project.setValues(req.body)) {
             return res.status(412).send('Your image file was larger than 1mb ');
         }
+
+        // je moet op een andere manier checken of die image groter is dan 1mb, niet met setvalues
+        // je moet kijken in req.files.image, doe het dan ook in die 'if' op regel 27
+        // return met een error als de image groter is dan 1mb
+
+        /*if (!project.setValues(req.body)) {
+            return res.status(412).send('Your image file was larger than 1mb ');
+        }*/
 
         if (!project.hasProperties(required)) {
         	return res.status(412).send('Projects must have the following properties: ' + required.join(', '));
@@ -47,11 +56,13 @@ module.exports =
     },
 
     delete: function (req, res, args) {
-        var project = new Project();
-        project.setValues(req.body);
-        console.log(project._id);
-        project.remove({ _id: project._id });
-        
-        
-    },
+        Project.fetch({
+            "_id": req.params.id
+        }, function (err, doc) {
+            var project = doc;
+            if (project === null) return res.status(404).send('Project not found');
+            project.remove();
+            res.status(200).send('Project has been deleted');
+        });
+    }
 }

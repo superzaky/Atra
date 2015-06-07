@@ -19,14 +19,55 @@ $(document).ready(function ()
         }
     });
 
-    $('#project-form').submit(function (e)
+    $('#add-project-form').submit(function (e)
     {
         e.preventDefault();
-        post(this, false, false)
+
+        var config = {
+            processData: false,
+            contentType: false
+        }
+
+        post(this, config)
         .done(function (data) {
+            var project = 
+            "<li id='project-" + data._id + "'>" + 
+                "<div class='text-right'>" +
+                    "<a data-toggle='modal' href='#delete-project-modal' data-id='" + data._id + "'>Delete</a> |" +
+                    "<a href='#'>Edit</a>" +
+                "</div>" + 
+                "<h1><a href='projects/" + data._id + "'>" + data.name + "</a></h1>" +
+                "<p>" + data.content + "</p>" +
+                "<img class='img-responsive' src='" + data.image + "'>" +
+            "</li>";
+
+            $('#project-list').append(project);
+            $('#add-project-modal').modal('hide');
             notify('Changes have been saved succesfully', 'Success');
         });
     });
 
-    
+    $('#delete-project-modal').on('show.bs.modal', function(e) {
+        var projectId = $(e.relatedTarget).data('id');
+        var $form = $(e.currentTarget).find('#delete-project-form');
+        $form.attr('action', '/api/projects/' + projectId);
+        $form.attr('project', projectId);
+    });
+
+    $('#delete-project-form').submit(function (e)
+    {
+        e.preventDefault();
+
+        var projectId = $(this).attr('project');
+        var config = {
+            type: 'delete'
+        }
+
+        post(this, config)
+        .done(function (data) {
+            $('#project-' + projectId).remove();
+            $('#delete-project-modal').modal('hide');
+            notify('Project has been successfully deleted', 'Success');
+        });
+    });
 });
