@@ -25,6 +25,10 @@ module.exports =
 
         if (typeof req.files.image != 'undefined') {
             // plaats hier code om req.files.image grootte te checken
+            console.log(req.files.image['size']);
+                if (req.files.image['size'] > 1000000) {
+                     //return res.status(412).send('Your image file was larger than 1zmb ');
+                }
        		project.setValues({ "image": req.files.image });
     	}
 

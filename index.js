@@ -1,5 +1,6 @@
 var express = require('express');
 var multer = require('multer');
+var easyimg = require('easyimage');
 var favicon = require('serve-favicon');
 var session = require('express-session')
 var bodyParser = require('body-parser');
