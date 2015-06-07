@@ -147,10 +147,12 @@ code {
 }
 
 .modal-content {
+    color: #D8D8D8;
     background-color: #222;
 }
 
 .modal-footer {
+    color: #D8D8D8;
     border-color: #080808;
 }
 
@@ -277,3 +279,22 @@ code {
 .form-control:-moz-placeholder { color: #505050; }
 .form-control::-moz-placeholder { color: #505050; }
 .form-control:-ms-input-placeholder { color: #505050; }
+
+.spinner {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba( 0, 0, 0, 0.6 ) url('/images/spinner.gif') 50% 50% no-repeat;
+}
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .spinner {
+    display: block;
+}
