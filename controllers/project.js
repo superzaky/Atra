@@ -1,4 +1,5 @@
 var Project = require(process.env.root + '/models/project');
+var im = require('imagemagick');
 
 module.exports =
 {
@@ -27,6 +28,15 @@ module.exports =
             // plaats hier code om req.files.image grootte te checken
             console.log(req.files.image['size']);
                 if (req.files.image['size'] > 1000000) {
+                    im.resize({
+                        srcPath: req.files.image['name'],
+                        dstPath: req.files.image['path'],
+                        width:   576,
+                        height:  250
+                    }, function(err, stdout, stderr){
+                      if (err) throw err;
+                      console.log('resized image to fit within 576x250');
+                    });
                      //return res.status(412).send('Your image file was larger than 1zmb ');
                 }
        		project.setValues({ "image": req.files.image });
