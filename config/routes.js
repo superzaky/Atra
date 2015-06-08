@@ -15,6 +15,7 @@ module.exports =
     { 'resource' : '/api/users/:id',      'method' : 'post',   'controller' : 'user',         'action' : 'update',           'args' : { } },
     { 'resource' : '/api/projects',       'method' : 'get',    'controller' : 'project',      'action' : 'list',             'args' : { } },
     { 'resource' : '/api/projects',       'method' : 'post',   'controller' : 'project',      'action' : 'add',              'args' : { } },
+    { 'resource' : '/api/projects/:id',   'method' : 'get',    'controller' : 'project',      'action' : 'get',              'args' : { } },
     { 'resource' : '/api/projects/:id',   'method' : 'delete', 'controller' : 'project',      'action' : 'delete',           'args' : { } },
 ];     
      

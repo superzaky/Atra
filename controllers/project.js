@@ -1,18 +1,44 @@
 var Project = require(process.env.root + '/models/project');
 var im = require('imagemagick');
+var util = require('util');
 
 module.exports =
 {
+    // admin
     default: function (req, res, args) {
         Project.fetchAll({}, function (err, docs) {
             res.render('projects', { 'user' : req.session.user, 'projects' : docs });
         });
     },
 
+    info_view: function (req, res, args) {
+        Project.fetchAll({}, function (err, docs) {
+            res.render('projects', { 'user' : req.session.user, 'projects' : docs });
+        });
+    },
     // api
     list: function (req, res, args) {
+        var sanitize = ['_id', '__v'];
+        var filter = req.query.filter;
+
+        if (typeof filter != 'undefined' && filter != null) {
+            sanitize = sanitize.concat(JSON.parse(filter));
+        }
+
         Project.fetchAll({}, function (err, docs) {
-            res.status(200).json(Project.sanitize(docs, ['_id', '__v']));
+            res.status(200).json(Project.sanitize(docs, sanitize));
+        });
+    },
+
+    get: function (req, res, args) {
+        Project.fetch({
+            "_id": req.params.id
+        }, function (err, doc) {
+            var project = doc;
+
+            if (typeof project === 'undefined' || project === null)  return res.status(404).send('Project not found');
+
+            res.status(200).json(project.sanitize(['_id', '__v']));
         });
     },
 
@@ -27,18 +53,7 @@ module.exports =
         if (typeof req.files.image != 'undefined') {
             // plaats hier code om req.files.image grootte te checken
             console.log(req.files.image['size']);
-                if (req.files.image['size'] > 1000000) {
-                    im.resize({
-                        srcPath: req.files.image['name'],
-                        dstPath: req.files.image['path'],
-                        width:   576,
-                        height:  250
-                    }, function(err, stdout, stderr){
-                      if (err) throw err;
-                      console.log('resized image to fit within 576x250');
-                    });
-                     //return res.status(412).send('Your image file was larger than 1zmb ');
-                }
+                if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
        		project.setValues({ "image": req.files.image });
     	}
 
