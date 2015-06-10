@@ -1,17 +1,46 @@
 var Project = require(process.env.root + '/models/project');
+var im = require('imagemagick');
+var util = require('util');
 
 module.exports =
 {
-    default: function (req, res, args) {
+    // admin
+    view_projects: function (req, res, args) {
         Project.fetchAll({}, function (err, docs) {
             res.render('projects', { 'user' : req.session.user, 'projects' : docs });
         });
     },
 
+    view_project: function (req, res, args) {
+        Project.fetch({
+            "_id": req.params.id
+        }, function (err, doc) {
+            var project = doc;
+            res.render('project', { 'user' : req.session.user, 'project' : project });
+        });
+    },
+
     // api
     list: function (req, res, args) {
+        var sanitize = ['_id', '__v'];
+        var filter = req.query.filter;
+
+        if (typeof filter != 'undefined' && filter != null) {
+            sanitize = sanitize.concat(JSON.parse(filter));
+        }
+
         Project.fetchAll({}, function (err, docs) {
-            res.status(200).json(Project.sanitize(docs, ['_id', '__v']));
+            res.status(200).json(Project.sanitize(docs, sanitize));
+        });
+    },
+
+    get: function (req, res, args) {
+        Project.fetch({
+            "_id": req.params.id
+        }, function (err, doc) {
+            var project = doc;
+            if (typeof project === 'undefined' || project === null)  return res.status(404).send('Project not found');
+            res.status(200).json(project.sanitize(['_id', '__v']));
         });
     },
 
@@ -25,18 +54,10 @@ module.exports =
 
         if (typeof req.files.image != 'undefined') {
             // plaats hier code om req.files.image grootte te checken
+            console.log(req.files.image['size']);
+                if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
        		project.setValues({ "image": req.files.image });
     	}
-
-        project.setValues(req.body);
-
-        // je moet op een andere manier checken of die image groter is dan 1mb, niet met setvalues
-        // je moet kijken in req.files.image, doe het dan ook in die 'if' op regel 27
-        // return met een error als de image groter is dan 1mb
-
-        /*if (!project.setValues(req.body)) {
-            return res.status(412).send('Your image file was larger than 1mb ');
-        }*/
 
         if (!project.hasProperties(required)) {
         	return res.status(412).send('Projects must have the following properties: ' + required.join(', '));

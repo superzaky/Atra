@@ -34,19 +34,18 @@
           </aside>
           <div class="col-lg-9 col-lg-offset-1 col-md-9 col-sm-9">
             <ul id='project-list' class='list-unstyled'>
-              <% projects.forEach(function (project) { %>                
+                       
                 <li id="project-<%= project._id %>">
-                  <h1><a href='/projects/<%= project._id %>'><%= project.name %></a> <small><small>[<a data-toggle="modal" href="#delete-project-modal" data-id="<%= project._id %>">Delete</a> | <a href="#">Edit</a>]</small></small></h1>
-                  <p><%= project.content.substring(0,50) %> ... <br> <a href='/projects/<%= project._id %>'>READ MORE <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a> </p>
-                  <img class='img-responsive' src='<%= project.image %>' width="10%" height="10%">
+                  <h1><a href='#'><%= project.name %></a> <small><small>[<a data-toggle="modal" href="#delete-project-modal" data-id="<%= project._id %>">Delete</a> | <a href="#">Edit</a>]</small></small></h1>
+                  <p><%= project.content %></p>
+                  <img class='img-responsive' src='<%= project.image %>' >
                 </li>
-              <% }); %>
+            
             </ul>
           </div>
         </div>
     </main>
     <% include _partials/delete-project-modal.ejs %>
-    <% include _partials/add-project-modal.ejs %>
     <div class='spinner'></div>
 </body>
 </html>

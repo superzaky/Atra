@@ -32,16 +32,13 @@ $(document).ready(function ()
         .done(function (data) {
             var project = 
             "<li id='project-" + data._id + "'>" + 
-                "<div class='text-right'>" +
-                    "<a data-toggle='modal' href='#delete-project-modal' data-id='" + data._id + "'>Delete</a> |" +
-                    "<a href='#'>Edit</a>" +
-                "</div>" + 
-                "<h1><a href='projects/" + data._id + "'>" + data.name + "</a></h1>" +
+                "<h1><a href='projects/" + data._id + "'>" + data.name + "</a> <small><small>" +
+                "[<a data-toggle='modal' href='#delete-project-modal' data-id='" + data._id + "'>Delete</a> | <a href='#'>Edit</a>]</small></small></h1>" +
                 "<p>" + data.content + "</p>" +
                 "<img class='img-responsive' src='" + data.image + "'>" +
             "</li>";
 
-            $('#project-list').append(project);
+            $('#project-list').prepend(project);
             $('#add-project-modal').modal('hide');
             notify('Changes have been saved succesfully', 'Success');
         });
