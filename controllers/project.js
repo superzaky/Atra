@@ -1,6 +1,4 @@
 var Project = require(process.env.root + '/models/project');
-var im = require('imagemagick');
-var util = require('util');
 
 module.exports =
 {
@@ -53,8 +51,6 @@ module.exports =
         var required = ['name'];
 
         if (typeof req.files.image != 'undefined') {
-            // plaats hier code om req.files.image grootte te checken
-            console.log(req.files.image['size']);
                 if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
        		project.setValues({ "image": req.files.image });
     	}
