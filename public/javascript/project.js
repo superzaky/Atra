@@ -25,27 +25,24 @@ $(document).ready(function ()
     $('#upload-project-image').change(function(){
         var $image = $('#preview-project');
         $image.removeClass('hidden');
-        previewImage(this, $image);
-
-        $image.cropper({
-          aspectRatio: 16 / 9,
-          autoCropArea: 0.65,
-          strict: false,
-          guides: false,
-          highlight: false,
-          dragCrop: false,
-          cropBoxMovable: false,
-          cropBoxResizable: false
+        previewImage(this, $image, function ($element)
+        {
+          $element.cropper({
+            aspectRatio: 16 / 9,
+            autoCropArea: 0.65,
+            strict: false,
+            guides: true,
+            highlight: false,
+            dragCrop: false,
+            cropBoxMovable: false,
+            cropBoxResizable: false
+          });
         });
     });
 
     $('#add-project-modal').on('hidden.bs.modal', function () {
-      // var $image = $('#preview-project');
-      // cropBoxData = $image.cropper('getCropBoxData');
-      //             alert(JSON.stringify(cropBoxData));
-
-      // canvasData = $image.cropper('getCanvasData');
-      // $image.cropper('destroy');
+      var $image = $('#preview-project');
+      $image.cropper('destroy');
     });
 
     $('#add-project-form').submit(function (e)
@@ -98,12 +95,13 @@ $(document).ready(function ()
     });
 });
 
-function previewImage(input, $element) {
+function previewImage(input, $element, callback) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
             $element.attr('src', e.target.result);
+            if (typeof callback != 'undefined' && callback !== null) callback($element);
         }
 
         reader.readAsDataURL(input.files[0]);
