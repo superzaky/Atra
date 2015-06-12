@@ -50,7 +50,9 @@ module.exports =
         var project = new Project();
         var required = ['name'];
 
-        if (typeof req.files.image != 'undefined') {
+        if (typeof req.body.base64 != 'undefined') {
+            project.setValues({ "image": req.body.base64 });
+        } else if (typeof req.files.image != 'undefined') {
             if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
        		project.setValues({ "image": req.files.image });
     	}
