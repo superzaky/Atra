@@ -2,6 +2,7 @@
 <html lang='en'>
 <head>
     <% include _partials/header.ejs %>
+    <link rel='stylesheet' href='/css/project.css'>
     <script type='text/javascript' src='/javascript/project.js'></script>
 </head>
 <body ng-app=''>
@@ -37,8 +38,11 @@
               <% projects.forEach(function (project) { %>                
                 <li id="project-<%= project._id %>">
                   <h1><a href='/projects/<%= project._id %>'><%= project.name %></a> <small><small>[<a data-toggle="modal" href="#delete-project-modal" data-id="<%= project._id %>">Delete</a> | <a href="#">Edit</a>]</small></small></h1>
-                  <p><%= project.content.substring(0,50) %> ... <br> <a href='/projects/<%= project._id %>'>READ MORE <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a> </p>
-                  <img class='img-responsive' src='<%= project.image %>' width="10%" height="10%">
+                  <% if (typeof project.content != 'undefined') { %>
+                    <p><%= project.content.substring(0,50) %> ... <br> <a href='/projects/<%= project._id %>'>READ MORE <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a> </p>
+                  <% } %>
+                  <img class='img-responsive' src='<%= project.image %>'>
+
                 </li>
               <% }); %>
             </ul>

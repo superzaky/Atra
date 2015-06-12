@@ -7,7 +7,10 @@ $(document).on('change', '.btn-file :file', function() {
 });
 
 $(document).ready(function ()
-{   
+{
+    cropBoxData = null;
+    canvasData = null;
+
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         var input = $(this).parents('.input-group').find(':text');
         var log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -19,9 +22,57 @@ $(document).ready(function ()
         }
     });
 
+    $('#upload-project-image').change(function(){
+        var $image = $('#preview-project');
+        $image.removeClass('hidden');
+
+        $('#crop-btn').removeClass('hidden');
+
+        previewImage(this, $image, function ($element)
+        {
+          $element.cropper({
+            aspectRatio: NaN,
+            autoCropArea: 0.90,
+            strict: false,
+            guides: true,
+            highlight: false,
+            dragCrop: false,
+            cropBoxMovable: false,
+            cropBoxResizable: false
+          });
+        });
+    });
+
+    $('#crop-btn').on('click', function () {
+      var $image = $('#preview-project');
+      var data = $image.cropper('getCropBoxData');
+      if ((data.width > 1000 || data.height > 1000) || (data.width < 100 || data.height < 100)) {
+        return notify('Image must be smaller than 1000x1000 pixels and bigger than 100x100, please crop it', 'Warning');
+      }
+
+      var canvas = $image.cropper('getCroppedCanvas');
+      var src = canvas.toDataURL();
+      $image.cropper('destroy');
+      $image.attr('src', src);
+      $('#image-base64').val(src);
+      $('#crop-btn').addClass('hidden');
+      $('#save-btn').removeClass('hidden');
+    });
+
+    $('#add-project-modal').on('hidden.bs.modal', function () {
+      var $image = $('#preview-project');
+      $image.cropper('destroy');
+    });
+
     $('#add-project-form').submit(function (e)
     {
         e.preventDefault();
+
+        var $image = $('#preview-project');
+        var data = $image.cropper('getCropBoxData');
+        if ((data.width > 1000 || data.height > 1000) || (data.width < 100 || data.height < 100)) {
+          return notify('Image must be smaller than 1000x1000 pixels and bigger than 100x100, please crop it', 'Warning');
+        }
 
         var config = {
             processData: false,
@@ -41,6 +92,7 @@ $(document).ready(function ()
             $('#project-list').prepend(project);
             $('#add-project-modal').modal('hide');
             notify('Changes have been saved succesfully', 'Success');
+            $('#save-btn').addClass('hidden');
         });
     });
 
@@ -68,3 +120,16 @@ $(document).ready(function ()
         });
     });
 });
+
+function previewImage(input, $element, callback) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $element.attr('src', e.target.result);
+            if (typeof callback != 'undefined' && callback !== null) callback($element);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}

@@ -19,8 +19,7 @@ var methods = {
         for (var key in values) {
             if (typeof values[key] === 'string' && values[key].trim() === '') continue;
 
-            if (key === 'image') {
-                
+            if (key === 'image' && typeof values[key] !== 'string') {
                 var image = values[key];
 
                 fs.readFile(image.path, function (err, data) {

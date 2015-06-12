@@ -20,16 +20,20 @@
               <div class="input-group">
                   <span class="input-group-btn">
                       <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" name="image" multiple>
+                          Browse&hellip; <input id='upload-project-image' type="file" name="image">
                       </span>
                   </span>
                   <input type="text" class="form-control" readonly>
               </div>
             </div>
+            <div class="form-group">
+              <img id='preview-project' class='img-responsive hidden' src='#' alt='Preview'>
+              <input type='hidden' id='image-base64' name='base64'>
+            </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary hidden" id="crop-btn">Crop</button>
+          <button type="submit" class="btn btn-primary hidden" id="save-btn">Save changes</button>
         </div>
       </div>
     </form>

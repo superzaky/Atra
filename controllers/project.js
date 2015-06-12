@@ -43,17 +43,21 @@ module.exports =
     },
 
     add: function (req, res, args) {
-        // if (typeof req.session.user === 'undefined' || req.session.user === null) {
-        //     return res.status(401).send('Unauthorized');
-        // }
+        if (typeof req.session.user === 'undefined' || req.session.user === null) {
+            return res.status(401).send('Unauthorized');
+        }
 
         var project = new Project();
         var required = ['name'];
 
-        if (typeof req.files.image != 'undefined') {
-                if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
+        if (typeof req.body.base64 != 'undefined') {
+            project.setValues({ "image": req.body.base64 });
+        } else if (typeof req.files.image != 'undefined') {
+            if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
        		project.setValues({ "image": req.files.image });
     	}
+
+        project.setValues(req.body);
 
         if (!project.hasProperties(required)) {
         	return res.status(412).send('Projects must have the following properties: ' + required.join(', '));
