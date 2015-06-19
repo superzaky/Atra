@@ -1,0 +1,30 @@
+{
+  "name": "Atra",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/MISTAegis/Atra",
+  "authors": [
+    "AtraCaelus <atracaelus@gmail.com>"
+  ],
+  "description": "Realtime projects on the web",
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "Angular.js",
+    "JavaScript",
+    "JQuery",
+    "Socket.io",
+    "MongoDB"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

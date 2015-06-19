@@ -127,7 +127,7 @@ function previewImage(input, $element, callback) {
 
         reader.onload = function (e) {
             $element.attr('src', e.target.result);
-            if (typeof callback != 'undefined' && callback !== null) callback($element);
+            if (isset(callback)) callback($element);
         }
 
         reader.readAsDataURL(input.files[0]);

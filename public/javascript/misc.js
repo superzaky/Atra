@@ -9,32 +9,6 @@ $(window).load(function ()
     });
 });
 
-$(document).on('click', '.ajax-request', (function (e)
-{
-    e.preventDefault();
-
-    var $element = $(this);
-    var action = $element.attr('request-action');
-    var method = $element.attr('request-method');
-    var message = $element.attr('request-message');
-    var messageType = $element.attr('request-message-type');
-
-    if (typeof action == 'undefined' || typeof method == 'undefined') return;
-
-    var form = {
-        action: action,
-        method: method
-    }; 
-
-    post(form)
-    .done(function (data) {
-        if (message != null && typeof message != 'undefined') {
-            if (messageType == null || typeof messageType == 'undefined') messageType = 'Success';
-            notify(message, messageType);
-        }
-    });
-}));
-
 function post(form, config)
 {
     var options = {
@@ -44,7 +18,7 @@ function post(form, config)
         cache: false
     };
 
-    if (typeof config != 'undefined') {
+    if (isset(config)) {
         $.each(config, function(key, value) {
             options[key] = value;
         });
@@ -59,7 +33,7 @@ function post(form, config)
 
     return $.ajax(options)
     .always(function (response) {
-        if (typeof response != 'undefined' && typeof response.status != 'undefined' && response.status.toString[0] != 2) {
+        if (isset(response) && isset(response.status) && response.status.toString[0] != 2) {
             notify(response.responseText, 'Warning');
         }
     });

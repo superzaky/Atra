@@ -10,7 +10,9 @@ $(document).ready(function ()
             }
         })
         .always(function (response) {
-            $('#login-modal .modal-content').effect('shake');
+            if (isset(response) && isset(response.status) && response.status.toString[0] != 2) {
+                $('#login-modal .modal-content').effect('shake');
+            }
         });
     });
 });
