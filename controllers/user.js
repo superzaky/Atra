@@ -9,7 +9,7 @@ module.exports =
 
     // api
     list: function (req, res, args) {
-        var users = User.fetchAll({}, function (err, docs) {
+        User.fetchAll({}, function (err, docs) {
             res.status(200).json(User.sanitize(docs, ['_id', 'password', '__v']));
         });
     },

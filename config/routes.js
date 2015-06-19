@@ -10,6 +10,7 @@ module.exports =
     { 'resource' : '/admin/chat',         'method' : 'get',    'controller' : 'chat',         'action' : 'default',          'args' : { } },
     { 'resource' : '/admin/game',         'method' : 'get',    'controller' : 'game',         'action' : 'default',          'args' : { } },
     { 'resource' : '/admin/settings',     'method' : 'get',    'controller' : 'user',         'action' : 'settings',         'args' : { } },
+    { 'resource' : '/api',                'method' : 'get',    'controller' : 'index',        'action' : 'api',              'args' : { } },
     { 'resource' : '/api/users',          'method' : 'get',    'controller' : 'user',         'action' : 'list',             'args' : { } },
     { 'resource' : '/api/users',          'method' : 'post',   'controller' : 'user',         'action' : 'add',              'args' : { } },
     { 'resource' : '/api/users/:id',      'method' : 'get',    'controller' : 'user',         'action' : 'get',              'args' : { } },
