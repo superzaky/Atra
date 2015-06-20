@@ -45,7 +45,7 @@ $(document).ready(function ()
 
     $('#crop-btn').on('click', function () {
       var $image = $('#preview-project');
-      var data = $image.cropper('getCropBoxData');
+      var data = $image.cropper('getData');
       if ((data.width > 1000 || data.height > 1000) || (data.width < 100 || data.height < 100)) {
         return notify('Image must be smaller than 1000x1000 pixels and bigger than 100x100, please crop it', 'Warning');
       }
@@ -69,7 +69,7 @@ $(document).ready(function ()
         e.preventDefault();
 
         var $image = $('#preview-project');
-        var data = $image.cropper('getCropBoxData');
+        var data = $image.cropper('getData');
         if ((data.width > 1000 || data.height > 1000) || (data.width < 100 || data.height < 100)) {
           return notify('Image must be smaller than 1000x1000 pixels and bigger than 100x100, please crop it', 'Warning');
         }
