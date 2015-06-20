@@ -31,11 +31,11 @@
           <aside class="col-lg-2 col-md-3 col-sm-3">
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add-project-modal">
               Add project
-            </button> 
+            </button>
           </aside>
           <div class="col-lg-9 col-lg-offset-1 col-md-9 col-sm-9">
             <ul id='project-list' class='list-unstyled'>
-              <% projects.forEach(function (project) { %>                
+              <% projects.forEach(function (project) { %>
                 <li id="project-<%= project._id %>">
                   <h1><a href='/projects/<%= project._id %>'><%= project.name %></a> <small><small>[<a data-toggle="modal" href="#delete-project-modal" data-id="<%= project._id %>">Delete</a> | <a href="#">Edit</a>]</small></small></h1>
                   <% if (typeof project.content != 'undefined') { %>
