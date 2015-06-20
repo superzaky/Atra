@@ -2,6 +2,8 @@ var url = require('url');
 
 module.exports = function (io, socket, clients)
 {
+    socket.emit('env', process.env.NODE_ENV);
+
     var user = socket.request.session.user;
     var pathname = url.parse(socket.handshake.headers.referer).pathname;
 

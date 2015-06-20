@@ -18,3 +18,9 @@ socket.on('online', function (data)
     $tbody.html('');
     $tbody.append(rows);
 });
+
+socket.on('env', function (env) {
+    if ('env' !== 'production') {
+        $('body').append('<script type="text/javascript" src="//localhost:35729/livereload.js"></script>');
+    }
+});
