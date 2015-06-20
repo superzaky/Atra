@@ -93,7 +93,15 @@ $(document).ready(function ()
             $('#add-project-modal').modal('hide');
             notify('Changes have been saved succesfully', 'Success');
             $('#save-btn').addClass('hidden');
+
         });
+
+        $('#project-name').val('');
+        $('#project-text').val('');
+        $('#file-name').val('');
+        $image.attr('src', '');
+        $image.attr('alt', '');
+        $('#save-btn').removeClass('hidden');
     });
 
     $('#delete-project-modal').on('show.bs.modal', function(e) {
