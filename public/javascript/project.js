@@ -27,7 +27,7 @@ $(document).ready(function ()
         $image.removeClass('hidden');
 
         $('#crop-btn').removeClass('hidden');
-
+        $('#save-btn').addClass('hidden');
         previewImage(this, $image, function ($element)
         {
           $element.cropper({
@@ -81,8 +81,8 @@ $(document).ready(function ()
 
         post(this, config)
         .done(function (data) {
-            var project = 
-            "<li id='project-" + data._id + "'>" + 
+            var project =
+            "<li id='project-" + data._id + "'>" +
                 "<h1><a href='projects/" + data._id + "'>" + data.name + "</a> <small><small>" +
                 "[<a data-toggle='modal' href='#delete-project-modal' data-id='" + data._id + "'>Delete</a> | <a href='#'>Edit</a>]</small></small></h1>" +
                 "<p>" + data.content + "</p>" +
@@ -92,7 +92,6 @@ $(document).ready(function ()
             $('#project-list').prepend(project);
             $('#add-project-modal').modal('hide');
             notify('Changes have been saved succesfully', 'Success');
-            $('#save-btn').addClass('hidden');
 
         });
 

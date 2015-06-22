@@ -22,7 +22,7 @@ module.exports =
     list: function (req, res, args) {
         var sanitize = ['_id', '__v'];
         var filter = req.query.filter;
-
+        
         if (typeof filter != 'undefined' && filter != null) {
             sanitize = sanitize.concat(JSON.parse(filter));
         }
@@ -46,7 +46,7 @@ module.exports =
         if (typeof req.session.user === 'undefined' || req.session.user === null) {
             return res.status(401).send('Unauthorized');
         }
-
+        
         var project = new Project();
         var required = ['name'];
 

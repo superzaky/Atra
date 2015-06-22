@@ -1,11 +1,13 @@
 var MongoDocument = require(process.env.root + '/lib/MongoDocument');
 var validator = require('validator');
+var moment = require('moment');
 var fs = require('fs');
 
 var properties = {
     "name": String,
     "content": String,
-    "image": String
+    "image": String,
+    "date": String
 }
 
 var methods = {
@@ -15,6 +17,8 @@ var methods = {
 
     "setValues": function (values) {
         var self = this;
+        var now=moment(Date.now()).format('DD/MM/YYYY hh:mm:ss A');
+        self['date']=now;
 
         for (var key in values) {
             if (typeof values[key] === 'string' && values[key].trim() === '') continue;
