@@ -92,7 +92,6 @@ $(document).ready(function ()
             $('#project-list').prepend(project);
             $('#add-project-modal').modal('hide');
             notify('Changes have been saved succesfully', 'Success');
-
         });
 
         $('#project-name').val('');

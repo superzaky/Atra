@@ -17,7 +17,7 @@ var methods = {
 
     "setValues": function (values) {
         var self = this;
-        var now=moment(Date.now()).format('DD/MM/YYYY hh:mm:ss A');
+        var now=moment(Date.now()).format('YYYY-MM-DDTHH:mm:ss+01:00');
         self['date']=now;
 
         for (var key in values) {
