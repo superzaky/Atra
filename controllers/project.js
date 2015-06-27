@@ -14,6 +14,9 @@ module.exports =
             "_id": req.params.id
         }, function (err, doc) {
             var project = doc;
+            //http://themeandphoto.com/taplivedemos/2014/09/15/bootstrap-chat-example/index.html
+            //geef hier aan dat je van /project url komt om later onderscheidt te maken van /chat url
+            //console.log(project._id);
             res.render('project', { 'user' : req.session.user, 'project' : project });
         });
     },
