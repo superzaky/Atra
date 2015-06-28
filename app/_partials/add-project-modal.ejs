@@ -9,18 +9,18 @@
         <div class="modal-body">
             <div class="form-group">
               <label for="project-name" class="control-label">Name:</label>
-              <input id="project-name" type="text" class="form-control" name="name">
+              <input type="text" class="form-control" name="name">
             </div>
             <div class="form-group">
               <label for="project-text" class="control-label">Content:</label>
-              <textarea id="project-text" class="form-control" name="content"></textarea>
+              <textarea class="form-control" name="content"></textarea>
             </div>
             <div class="form-group">
               <label for="project-image" class="control-label">Image:</label>
               <div class="input-group">
                   <span class="input-group-btn">
                       <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input id='upload-project-image' type="file" name="image">
+                          Browse&hellip; <input id='upload-project-image' type="file">
                       </span>
                   </span>
                   <input type="text" id="file-name" class="form-control" readonly>
@@ -33,7 +33,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary hidden" id="crop-btn">Crop</button>
-          <button type="submit" class="btn btn-primary hidden" id="save-btn">Save changes</button>
+          <button type="submit" class="btn btn-primary " id="save-btn">Save changes</button>
         </div>
       </div>
     </form>

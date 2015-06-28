@@ -10,5 +10,5 @@ module.exports = function (io, socket, clients)
 
 function sendMessage (io, client, room, message)
 {
-    if (client) io.to(room).emit('server-message', { 'user' : client.name, 'message' : message });
+    if (client) io.to(room).emit('server-message', { 'user' : client.name, 'image' : client.image, 'message' : message });
 }

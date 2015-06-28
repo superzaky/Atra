@@ -18,7 +18,6 @@ var sessionMiddleware = session({
     'resave' : false,
     'saveUninitialized' : true
 });
-
 app.use(multer({ dest: './uploads/' }));
 app.use(sessionMiddleware);
 app.use(bodyParser.json());
