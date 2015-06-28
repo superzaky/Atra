@@ -13,9 +13,11 @@
           <div class="col-lg-9 col-lg-offset-1 col-md-9 col-sm-9">
             <ul id='project-list' class='list-unstyled'>
                 <li id="project-<%= project._id %>">
-                  <h1><a href='#'><%= project.name %></a> <small><small>[<a data-toggle="modal" href="#delete-project-modal" data-id="<%= project._id %>">Delete</a> | <a href="#">Edit</a>]</small></small></h1>
+                  <h1><a href='#'><%= project.name %></a></h1>
                   <p><%= project.content %></p>
-                  <img class='img-responsive' src='<%= project.image %>' >
+                  <img class='img-responsive' src='<%= project.image %>'>
+                  <p class='text-muted'>Created by <code><%= project.created.user.first_name + ' ' + project.created.user.last_name %></code> at <code><%= project.created.date.toUTCString() %></code></p>
+                  <p class='text-muted'>Last modified by <code><%= project.modified.user.first_name + ' ' + project.modified.user.last_name %></code> at <code><%= project.modified.date.toUTCString() %></code></p>
                 </li>
             </ul>
           </div>
@@ -41,6 +43,7 @@
         </div>
       </div>
     </div>
+    <% include _partials/edit-project-modal.ejs %>
     <% include _partials/delete-project-modal.ejs %>
 </body>
 </html>
