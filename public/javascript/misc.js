@@ -26,7 +26,6 @@ function post(form, config)
 
     if ($.inArray(form.method.toLowerCase(), ['get', 'delete']) === -1 && form.enctype == 'multipart/form-data') {
         options.data = new FormData(form);
-        console.log(options.data);
     } else {
         options.data = $(form).serialize();
     }

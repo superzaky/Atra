@@ -29,9 +29,11 @@
 
         <div class='row'>
           <aside class="col-lg-2 col-md-3 col-sm-3">
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add-project-modal">
-              Add project
-            </button>
+            <% if (typeof user != 'undefined' && user != null) { %>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add-project-modal">
+                Add project
+              </button>
+            <% } %>
           </aside>
           <div class="col-lg-9 col-lg-offset-1 col-md-9 col-sm-9">
             <ul id='project-list' class='list-unstyled'>
@@ -42,7 +44,8 @@
                     <p><%= project.content.substring(0,50) %> ... <br> <a href='/projects/<%= project._id %>'>READ MORE <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a> </p>
                   <% } %>
                   <img class='img-responsive' src='<%= project.image %>'>
-
+                  <p class='text-muted'>Created by <code><%= project.created.user.first_name + ' ' + project.created.user.last_name %></code> at <code><%= project.created.date.toUTCString() %></code></p>
+                  <p class='text-muted'>Last modified by <code><%= project.modified.user.first_name + ' ' + project.modified.user.last_name %></code> at <code><%= project.modified.date.toUTCString() %></code></p>
                 </li>
               <% }); %>
             </ul>

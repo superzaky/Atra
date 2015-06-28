@@ -4,7 +4,10 @@ module.exports =
 {
     // admin
     view_projects: function (req, res, args) {
-        Project.fetchAll({}, function (err, docs) {
+        Project.fetchAll({
+            "$query": {},
+            "$orderby": { "modified.date": -1 }
+        }, function (err, docs) {
             res.render('projects', { 'user' : req.session.user, 'projects' : docs });
         });
     },
@@ -30,7 +33,10 @@ module.exports =
             sanitize = sanitize.concat(JSON.parse(filter));
         }
 
-        Project.fetchAll({}, function (err, docs) {
+        Project.fetchAll({
+            "$query": {},
+            "$orderby": { "modified.date": -1 }
+        }, function (err, docs) {
             res.status(200).json(Project.sanitize(docs, sanitize));
         });
     },
@@ -54,13 +60,16 @@ module.exports =
         var required = ['name'];
 
         if (typeof req.body.base64 != 'undefined') {
-            project.setValues({ "image": req.body.base64 });
+            project.setImage(req.body.base64);
+            delete req.body.base64;
         } else if (typeof req.files.image != 'undefined') {
             if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
-       		project.setValues({ "image": req.files.image });
+       		project.setImage(req.files.image);
     	}
 
         project.setValues(req.body);
+        if (project.created.user === null) project.created.user = req.session.user;
+        project.modified.user = req.session.user;
 
         if (!project.hasProperties(required)) {
         	return res.status(412).send('Projects must have the following properties: ' + required.join(', '));

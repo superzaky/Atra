@@ -18,7 +18,6 @@ var sessionMiddleware = session({
     'resave' : false,
     'saveUninitialized' : true
 });
-//console.log(moment(Date.now()).format('DD/MM/YYYY hh:mm:ss A'));
 app.use(multer({ dest: './uploads/' }));
 app.use(sessionMiddleware);
 app.use(bodyParser.json());

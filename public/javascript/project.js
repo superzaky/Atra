@@ -8,8 +8,7 @@ $(document).on('change', '.btn-file :file', function() {
 
 $(document).ready(function ()
 {
-    cropBoxData = null;
-    canvasData = null;
+    var cropData = null;
 
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         var input = $(this).parents('.input-group').find(':text');
@@ -22,12 +21,13 @@ $(document).ready(function ()
         }
     });
 
-    $('#upload-project-image').change(function(){
+    $('#upload-project-image').change(function () {
         var $image = $('#preview-project');
         $image.removeClass('hidden');
 
         $('#crop-btn').removeClass('hidden');
         $('#save-btn').addClass('hidden');
+
         previewImage(this, $image, function ($element)
         {
           $element.cropper({
@@ -45,8 +45,9 @@ $(document).ready(function ()
 
     $('#crop-btn').on('click', function () {
       var $image = $('#preview-project');
-      var data = $image.cropper('getData');
-      if ((data.width > 1000 || data.height > 1000) || (data.width < 100 || data.height < 100)) {
+      cropData = $image.cropper('getData');
+
+      if ((cropData.width > 1000 || cropData.height > 1000) || (cropData.width < 100 || cropData.height < 100)) {
         return notify('Image must be smaller than 1000x1000 pixels and bigger than 100x100, please crop it', 'Warning');
       }
 
@@ -60,17 +61,14 @@ $(document).ready(function ()
     });
 
     $('#add-project-modal').on('hidden.bs.modal', function () {
-      var $image = $('#preview-project');
-      $image.cropper('destroy');
+      $('#preview-project').cropper('destroy');
     });
 
     $('#add-project-form').submit(function (e)
     {
         e.preventDefault();
 
-        var $image = $('#preview-project');
-        var data = $image.cropper('getData');
-        if ((data.width > 1000 || data.height > 1000) || (data.width < 100 || data.height < 100)) {
+        if (cropData && ((cropData.width > 1000 || cropData.height > 1000) || (cropData.width < 100 || cropData.height < 100))) {
           return notify('Image must be smaller than 1000x1000 pixels and bigger than 100x100, please crop it', 'Warning');
         }
 
@@ -81,7 +79,7 @@ $(document).ready(function ()
 
         post(this, config)
         .done(function (data) {
-            var project =
+            var $project =
             "<li id='project-" + data._id + "'>" +
                 "<h1><a href='projects/" + data._id + "'>" + data.name + "</a> <small><small>" +
                 "[<a data-toggle='modal' href='#delete-project-modal' data-id='" + data._id + "'>Delete</a> | <a href='#'>Edit</a>]</small></small></h1>" +
@@ -89,16 +87,16 @@ $(document).ready(function ()
                 "<img class='img-responsive' src='" + data.image + "'>" +
             "</li>";
 
-            $('#project-list').prepend(project);
+            $('#project-list').prepend($project);
             $('#add-project-modal').modal('hide');
+
             notify('Changes have been saved succesfully', 'Success');
         });
 
         $('#project-name').val('');
         $('#project-text').val('');
         $('#file-name').val('');
-        $image.attr('src', '');
-        $image.attr('alt', '');
+        $('#preview-project').attr({'src': '', alt: ''});
         $('#save-btn').removeClass('hidden');
     });
 
