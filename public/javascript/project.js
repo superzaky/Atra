@@ -178,6 +178,19 @@ function previewImage(input, $element, callback) {
     }
 }
 
+$(document).on('keypress', '#chatbox', function (e)
+{
+    var code = e.keyCode || e.which;
+
+    if(code == 13) {
+        $chatbox = $('#chatbox input');
+        var message = $chatbox.val();     
+        if (message.trim('') == '') return;
+        socket.emit('client-message', { 'message' : message });
+        $chatbox.val('');
+    }
+});
+
 // sockets
 socket.on('server-message', function (data)
 {
