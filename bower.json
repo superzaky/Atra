@@ -26,5 +26,13 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "~2.1.4",
+    "jquery-ui": "~1.11.4",
+    "font-awesome": "~4.3.0",
+    "bootstrap": "~3.3.5",
+    "cropper": "~0.10.0",
+    "angular": "~1.4.1",
+    "angular-resource": "~1.4.1",
+    "angular-ui-router": "~0.2.15"
   }
 }

@@ -1,3 +1,5 @@
+// TODO: use angular-socket instead
+
 socket = io();
 
 socket.on('redirect', function()

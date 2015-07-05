@@ -1,0 +1,50 @@
+<div class='spinner'></div>
+
+<nav ng-controller='AuthCtrl' class='navbar navbar-inverse'>
+    <div class='container-fluid'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-collapse-portfolio'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a ng-if='session == null' class='navbar-brand' href='/'><img src='/assets/images/logo.png'></a>
+            <a ng-if='session != null' class='navbar-brand' href='/admin/settings'><img src='{{ session.user.image }}'></a>
+        </div>
+
+        <div class='collapse navbar-collapse' id='navbar-collapse-portfolio'>
+            <ul class='nav navbar-nav navbar-right'>
+                <li class='dropdown'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Portfolio<span class='caret'></span></a>
+                    <ul class='dropdown-menu' role='menu'>
+                        <li><a href='#'>About me</a></li>
+                        <li><a href='/projects'>Projects</a></li>
+                        <li class='divider'></li>
+                        <li><a href='/'>Back to home</a></li>
+                    </ul>
+                </li>
+                <li ng-if='session == null'>
+                    <button class='navbar-btn btn-primary btn' data-toggle='modal' data-target='#login-modal'>Sign in</button>
+                </li>
+                <li ng-if='session != null' class='dropdown'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Admin<span class='caret'></span></a>
+                    <ul class='dropdown-menu' role='menu'>
+                        <li><a href='/admin/chat'>Chat</a></li>
+                        <li><a href='/admin/game'>Game</a></li>
+                    </ul>
+                </li>
+                <li ng-if='session != null'>
+                    <button id='online-button' class='navbar-btn btn btn-default' data-toggle='modal' data-target='#online-modal'>Online</button>
+                </li>
+                <li ng-if='session != null'>
+                    <button ng-click='Auth.logout();' class='navbar-btn btn-primary btn'>Log out</button>
+                    <input id='current-user' type='hidden' value='{{ session.user.email }}'/>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div ng-include='"/app/_partials/login-modal.html"'></div>
+<!-- <div ng-include='"/app/_partials/online-modal.html"'></div> -->

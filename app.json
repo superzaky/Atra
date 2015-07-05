@@ -1,7 +1,10 @@
 {
-  "name": "Node.js Getting Started",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-getting-started",
+  "name": "Atra",
+  "description": "A project combining realtime elements with node.js and angular",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MISTAegis/Atra"
+  },
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"]
+  "keywords": ["node", "express", "angular", "socket.io"]
 }
