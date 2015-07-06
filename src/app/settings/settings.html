@@ -1,0 +1,38 @@
+<main>
+  <h1>My settings</h1>
+    <form ng-submit='settings.user.save();' name='form'>
+        <div class='form-group'>
+            <div class='input-group'>
+                <span class='input-group-addon'><span class='glyphicon glyphicon-pencil'></span></span>
+                <input ng-model='settings.form.user.first_name' class='form-control' type='text' placeholder='First name'>
+            </div>
+        </div>
+        <div class='form-group'>
+            <div class='input-group'>
+                <span class='input-group-addon'><span class='glyphicon glyphicon-pencil'></span></span>
+                <input ng-model='settings.form.user.last_name' class='form-control' type='text' placeholder='Last name'>
+            </div>
+        </div>
+        <div class='form-group'>
+            <div class='input-group'>
+                <span class='input-group-addon'><span class='glyphicon glyphicon-camera'></span></span>
+                <input ng-model='settings.form.user.image' class='form-control' type='text' placeholder='Image URL'>
+            </div>
+        </div>
+        <div class='form-group'>
+            <div class='input-group'>
+                <span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>
+                <input ng-model='settings.form.user.password' class='form-control' type='password' placeholder='Password'>
+            </div>
+        </div>
+        <div class='form-group'>
+            <div class='input-group'>
+                <span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>
+                <input ng-model='settings.form.confirmPassword' match='settings.form.user.password'
+                class='form-control' type='password' placeholder='Confirm password' name='confirm'>
+            </div>
+        </div>
+        <div ng-show='form.confirm.$error.match'>Password does not match!</div>
+        <button ng-disabled='form.confirm.$error.match' type='submit' class='btn btn-primary'><i class='fa fa-user-plus'></i> Update</button>
+    </form>
+</main>

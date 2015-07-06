@@ -3,8 +3,12 @@
 
     var app = angular.module('app', [
         'ui.router',
-        'ngResource',
+        'modals',
         'home',
-        'session'
+        'settings',
+        'auth',
+        'user',
+        'ngAnimate',
+        'angular-loading-bar'
     ]);
 })();

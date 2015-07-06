@@ -18,6 +18,8 @@
         <link type='text/css' rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css'>
         <link type='text/css' rel='stylesheet' href='/vendor/font-awesome/css/font-awesome.css'>
         <link type='text/css' rel='stylesheet' href='/vendor/cropper/dist/cropper.css'>
+        <link type='text/css' rel='stylesheet' href='/vendor/angular-toastr/dist/angular-toastr.css'>
+        <link type='text/css' rel='stylesheet' href='/vendor/angular-loading-bar/build/loading-bar.css' media='all'>
 
         <!-- local css -->
         <link type='text/css' rel='stylesheet' href='/assets/css/core.css'>
@@ -37,10 +39,18 @@
         <script type='text/javascript' src='/vendor/jquery/dist/jquery.js'></script>
         <script type='text/javascript' src='/vendor/jquery-ui/jquery-ui.js'></script>
         <script type='text/javascript' src='/vendor/bootstrap/dist/js/bootstrap.js'></script>
+        <script type='text/javascript' src='/vendor/underscore/underscore.js'></script>
         <script type='text/javascript' src='/vendor/cropper/dist/cropper.js'></script>
         <script type='text/javascript' src='/vendor/angular/angular.js'></script>
+        <script type='text/javascript' src='/vendor/angular-bootstrap/ui-bootstrap.js'></script>
+        <script type='text/javascript' src='/vendor/angular-bootstrap/ui-bootstrap-tpls.js'></script>
         <script type='text/javascript' src='/vendor/angular-ui-router/release/angular-ui-router.js'></script>
         <script type='text/javascript' src='/vendor/angular-resource/angular-resource.js'></script>
+        <script type='text/javascript' src='/vendor/angular-toastr/dist/angular-toastr.js'></script>
+        <script type='text/javascript' src='/vendor/angular-toastr/dist/angular-toastr.tpls.js'></script>
+        <script type='text/javascript' src='/vendor/angular-animate/angular-animate.js'></script>
+        <script type='text/javascript' src='/vendor/angular-loading-bar/build/loading-bar.js'></script>
+        <script type='text/javascript' src='/vendor/angular-validation-match/dist/angular-validation-match.js'></script>
 
         <!-- local js -->
         <script type='text/javascript' src='/socket.io/socket.io.js'></script>
@@ -51,13 +61,20 @@
         <!-- app js -->
         <script type='text/javascript' src='/app/app.module.js'></script>
         <script type='text/javascript' src='/app/app.config.js'></script>
+        <script type='text/javascript' src='/app/app.run.js'></script>
         <script type='text/javascript' src='/app/app.router.js'></script>
         <script type='text/javascript' src='/app/app.controller.js'></script>
+        <script type='text/javascript' src='/app/_partials/modals/modals.module.js'></script>
+        <script type='text/javascript' src='/app/_partials/modals/login/login-modal.controller.js'></script>
         <script type='text/javascript' src='/app/home/home.module.js'></script>
         <script type='text/javascript' src='/app/home/home.router.js'></script>
-        <script type='text/javascript' src='/app/session/session.module.js'></script>
-        <script type='text/javascript' src='/app/session/session.run.js'></script>
-        <script type='text/javascript' src='/app/session/controllers/auth.js'></script>
-        <script type='text/javascript' src='/app/session/factories/auth.js'></script>
+        <script type='text/javascript' src='/app/settings/settings.module.js'></script>
+        <script type='text/javascript' src='/app/settings/settings.router.js'></script>
+        <script type='text/javascript' src='/app/settings/settings.controller.js'></script>
+        <script type='text/javascript' src='/app/auth/auth.module.js'></script>
+        <script type='text/javascript' src='/app/auth/auth.factory.js'></script>
+        <script type='text/javascript' src='/app/auth/auth.controller.js'></script>
+        <script type='text/javascript' src='/app/user/user.module.js'></script>
+        <script type='text/javascript' src='/app/user/user.factory.js'></script>
     </body>
 </html>

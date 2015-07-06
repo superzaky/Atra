@@ -1,5 +1,7 @@
 (function () {
     'use strict';
 
-    var home = angular.module('home', []);
+    var home = angular.module('home', [
+        'ui.router'
+    ]);
 })();

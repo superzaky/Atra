@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    var session = angular.module('session');
+    var auth = angular.module('auth');
 
-    function Auth ($http, $q) {
+    function Auth ($http) {
         return {
             login: function (email, password) {
                 return $http.post('/api/login', { 
@@ -22,5 +22,5 @@
         };
     }
 
-    session.factory('Auth', ['$http', '$q', Auth]);
+    auth.factory('Auth', ['$http', Auth]);
 })();

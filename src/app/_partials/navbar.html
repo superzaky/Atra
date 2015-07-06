@@ -9,8 +9,8 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </button>
-            <a ng-if='session == null' class='navbar-brand' href='/'><img src='/assets/images/logo.png'></a>
-            <a ng-if='session != null' class='navbar-brand' href='/admin/settings'><img src='{{ session.user.image }}'></a>
+            <a ng-if='session == null' class='navbar-brand' ui-sref='home'><img src='/assets/images/logo.png'></a>
+            <a ng-if='session != null' class='navbar-brand' ui-sref='settings'><img src='{{ session.user.image }}'></a>
         </div>
 
         <div class='collapse navbar-collapse' id='navbar-collapse-portfolio'>
@@ -25,7 +25,7 @@
                     </ul>
                 </li>
                 <li ng-if='session == null'>
-                    <button class='navbar-btn btn-primary btn' data-toggle='modal' data-target='#login-modal'>Sign in</button>
+                    <button ng-click='Auth.modal.open();' class='navbar-btn btn-primary btn'>Sign in</button>
                 </li>
                 <li ng-if='session != null' class='dropdown'>
                     <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Admin<span class='caret'></span></a>
@@ -39,12 +39,8 @@
                 </li>
                 <li ng-if='session != null'>
                     <button ng-click='Auth.logout();' class='navbar-btn btn-primary btn'>Log out</button>
-                    <input id='current-user' type='hidden' value='{{ session.user.email }}'/>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-<div ng-include='"/app/_partials/login-modal.html"'></div>
-<!-- <div ng-include='"/app/_partials/online-modal.html"'></div> -->

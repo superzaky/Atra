@@ -3,7 +3,7 @@
 
     var app = angular.module('app');
 
-    function AppCtrl ($scope) {
+    function AppCtrl ($rootScope, $scope) {
         $scope.app = {
             title: 'Project Atra',
             config: {
@@ -11,11 +11,7 @@
                 colors: {}
             }
         };
-
-        $scope.$watch('app', function(newVal, oldVal) {
-            // do stuff if app property changes
-        }, true);
     }
 
-    app.controller('AppCtrl', ['$scope', AppCtrl]);
+    app.controller('AppCtrl', ['$rootScope', '$scope', AppCtrl]);
 })();
