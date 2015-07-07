@@ -20,7 +20,7 @@ var sessionMiddleware = session({
 });
 app.use(multer({ dest: './uploads' }));
 app.use(sessionMiddleware);
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ 'extended' : true }));
 app.use(express.static(__dirname + '/src'));
 app.use(favicon(__dirname + '/src/assets/images/favicon.ico'));

@@ -1,13 +1,12 @@
 (function () {
     'use strict';
 
-    var modals = angular.module('modals', [
+    var project = angular.module('project', [
+        'ngResource',
         'ui.router',
         'ui.bootstrap',
         'ui.bootstrap.tpls',
         'ngAnimate',
-        'toastr',
-        'auth',
-        'project'
+        'toastr'
     ]);
 })();

@@ -3,11 +3,12 @@
 
     var app = angular.module('app');
 
-    function run ($rootScope, $state, Auth) {
-        var nextState = null;
+    function run ($rootScope, $state, $stateParams, Auth) {
         var privateStates = [
             'settings',
-            'chat'
+            'chat',
+            'projects.add',
+            'projects.edit'
         ];
 
         Auth.getCurrentSession()
@@ -16,15 +17,18 @@
         }, function (error) {
             $rootScope.session = null;
         }).then(function () {
-            if (!$rootScope.session && _.contains(privateStates, nextState)) {
+            if (!$rootScope.session && _.contains(privateStates, $rootScope.toState.name)) {
                 $state.go('home');
             }
         });
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-            nextState = toState.name;
+            $rootScope.toState = toState;
+            $rootScope.fromState = fromState;
+            $rootScope.toParams = toParams;
+            $rootScope.fromParams = fromParams;
         });
     }
 
-    app.run(['$rootScope', '$state','Auth', run]);
+    app.run(['$rootScope', '$state', '$stateParams', 'Auth', run]);
 })();

@@ -70,6 +70,13 @@ code {
     transition: top 250ms ease-out 250ms;
 }
 
+.navbar-header .fa-home {
+    color: #9D9D9D;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+}
+
 li > a:active, li > a:hover, li > a:visited {
     background-color: transparent;
     color: #D8D8D8;
@@ -306,7 +313,7 @@ li > a:active, li > a:hover, li > a:visited {
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba( 0, 0, 0, 0.6 ) url('/images/spinner.gif') 50% 50% no-repeat;
+    background: rgba(0, 0, 0, 0.6) url('/images/spinner.gif') 50% 50% no-repeat;
 }
 
 body.loading {
@@ -315,4 +322,20 @@ body.loading {
 
 body.loading .spinner {
     display: block;
+}
+
+.footer-controls {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-controls * {
+    float: right;
+}
+
+.panel * {
+    color: black;
 }

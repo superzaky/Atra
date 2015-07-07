@@ -7,13 +7,13 @@
         $scope.instance = {
             modal: {
                 close: function () {
-                    $modalInstance.dismiss('cancel')
+                    $modalInstance.dismiss('cancel');
                 }
             },
 
             Auth: {
                 login: function () {
-                    Auth.login($scope.instance.form.email, $scope.instance.form.password)
+                    Auth.login($scope.instance.form.user.email, $scope.instance.form.user.password)
                     .then(function (response) {
                         $rootScope.session = response.data;
                         $modalInstance.close();

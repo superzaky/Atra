@@ -39,6 +39,7 @@
     "angular-toastr": "~1.4.1",
     "angular-animate": "~1.4.1",
     "angular-loading-bar": "~0.8.0",
-    "angular-validation-match": "~1.5.1"
+    "angular-validation-match": "~1.5.1",
+    "angular-sanitize": "~1.4.2"
   }
 }

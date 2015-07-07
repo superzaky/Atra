@@ -26,7 +26,7 @@ module.exports =
 
     // api
     list: function (req, res, args) {
-        var sanitize = ['_id', '__v'];
+        var sanitize = ['__v'];
         var filter = req.query.filter;
         
         if (typeof filter != 'undefined' && filter != null) {
@@ -134,7 +134,7 @@ module.exports =
             var project = doc;
             if (project === null) return res.status(404).send('Project not found');
             project.remove();
-            res.status(200).send('Project has been deleted');
+            res.status(204).end();
         });
     }
 }

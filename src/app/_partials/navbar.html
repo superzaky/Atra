@@ -1,5 +1,3 @@
-<div class='spinner'></div>
-
 <nav ng-controller='AuthCtrl' class='navbar navbar-inverse'>
     <div class='container-fluid'>
         <div class='navbar-header'>
@@ -9,35 +7,27 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </button>
-            <a ng-if='session == null' class='navbar-brand' ui-sref='home'><img src='/assets/images/logo.png'></a>
-            <a ng-if='session != null' class='navbar-brand' ui-sref='settings'><img src='{{ session.user.image }}'></a>
+            <a ng-if='!session' class='navbar-brand'><img src='/assets/images/logo.png'></a>
+            <a ng-if='session' class='navbar-brand' ui-sref='settings'><img src='{{ session.user.image }}'></a>
+            <a ui-sref='home'><i class='fa fa-home fa-2x'></i></a>
         </div>
 
         <div class='collapse navbar-collapse' id='navbar-collapse-portfolio'>
             <ul class='nav navbar-nav navbar-right'>
                 <li class='dropdown'>
-                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Portfolio<span class='caret'></span></a>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Utilities<span class='caret'></span></a>
                     <ul class='dropdown-menu' role='menu'>
-                        <li><a href='#'>About me</a></li>
-                        <li><a href='/projects'>Projects</a></li>
-                        <li class='divider'></li>
-                        <li><a href='/'>Back to home</a></li>
+                        <li><a ui-sref='chat' tooltip='Under construction' tooltip-placement='bottom'>Chat</a></li>
+                        <li><a ui-sref='projects'>Projects</a></li>
                     </ul>
                 </li>
-                <li ng-if='session == null'>
+                <li ng-if='!session'>
                     <button ng-click='Auth.modal.open();' class='navbar-btn btn-primary btn'>Sign in</button>
                 </li>
-                <li ng-if='session != null' class='dropdown'>
-                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Admin<span class='caret'></span></a>
-                    <ul class='dropdown-menu' role='menu'>
-                        <li><a href='/admin/chat'>Chat</a></li>
-                        <li><a href='/admin/game'>Game</a></li>
-                    </ul>
+                <li ng-if='session'>
+                    <button id='online-button' class='navbar-btn btn btn-default' tooltip='Under construction' tooltip-placement='bottom'>Who is online</button>
                 </li>
-                <li ng-if='session != null'>
-                    <button id='online-button' class='navbar-btn btn btn-default' data-toggle='modal' data-target='#online-modal'>Online</button>
-                </li>
-                <li ng-if='session != null'>
+                <li ng-if='session'>
                     <button ng-click='Auth.logout();' class='navbar-btn btn-primary btn'>Log out</button>
                 </li>
             </ul>
