@@ -1,0 +1,341 @@
+/*
+    Colors:
+    primary-text-color: #D8D8D8;
+    secondary-text-color: #9D9D9D;
+    code-text-color: #A26EFF;
+    btn-primary-color: #38285B;
+    btn-default-color: #222;
+    secondary-background-color: #1A1A1A or #111;
+    border-color: #080808;
+    navbar-height: 52px;
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Cuprum';
+}
+
+body {
+    background-color: #111;
+}
+
+main {
+    color: #D8D8D8;
+    margin: 50px;
+}
+
+a, a:active, a:hover, a:visited {
+    color: #A26EFF;
+}
+
+code {
+    color: #A26EFF;
+    background-color: #222;
+    border: 1px solid black;
+}
+
+.navbar {
+    opacity: 0.9;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.navbar-btn {
+    margin-left: 10px;
+}
+
+.navbar-brand {
+    height: 56px;
+    padding: 1px;
+    margin: 0;
+    background: #080808;
+    border-radius: 50%;
+    position: absolute;
+    left: 50px;
+    top: -2px;
+    z-index: 1;
+    -webkit-transition: top 250ms ease-out 250ms;
+    -moz-transition: top 250ms ease-out 250ms;
+    -o-transition: top 250ms ease-out 250ms;
+    transition: top 250ms ease-out 250ms;
+}
+
+.navbar-brand:hover, .navbar-brand:focus {
+    background: #080808 !important;
+    top: 10px;
+    -webkit-transition: top 250ms ease-out 250ms;
+    -moz-transition: top 250ms ease-out 250ms;
+    -o-transition: top 250ms ease-out 250ms;
+    transition: top 250ms ease-out 250ms;
+}
+
+.navbar-header .fa-home {
+    color: #9D9D9D;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+}
+
+li > a:active, li > a:hover, li > a:visited {
+    background-color: transparent;
+    color: #D8D8D8;
+}
+
+.active > a {
+    background-color: #333 !important;
+    color: #A26EFF !important;
+}
+
+.navbar-brand img {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+}
+
+.btn-default {
+    background-color: #222;
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.btn-default:hover, .btn-default:focus {
+    background-color: #111;
+    border-color: #080808;
+    color: #D8D8D8;
+}
+
+.btn-primary {
+    background-color: #38285B;
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #1F0F42;
+    border-color: #080808;
+    color: #D8D8D8;
+}
+
+.btn-secondary {
+    background-color: #405633;
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: #303D29;
+    border-color: #080808;
+    color: #D8D8D8;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.dropdown-menu {
+    background-color: #222;
+}
+
+.dropdown-menu > li > a {
+    color: #9D9D9D;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #111;
+    color: #D8D8D8;
+}
+
+.dropdown-menu .divider {
+    background-color: #080808;
+}
+
+.modal-header {
+    color: #D8D8D8;
+    border-color: #080808;
+}
+
+.modal-content {
+    color: #D8D8D8;
+    background-color: #222;
+}
+
+.modal-footer {
+    color: #D8D8D8;
+    border-color: #080808;
+}
+
+.modal-fullscreen .modal-dialog {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-fullscreen .modal-content {
+    height: 100%;
+    border-radius: 0;
+    overflow: auto;
+}
+
+.close, .close:hover, .close:focus {
+    color: white;
+    text-shadow: none;
+}
+
+.form-control {
+    color: #9D9D9D;
+    background-color: #1A1A1A;
+    border-color: #080808;
+}
+
+.input-group-addon {
+    background-color: #111;
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.table-striped > tbody > tr > td, .table-striped > thead > tr > th {
+    border-color: #080808;
+    color: #9D9D9D;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #1A1A1A;
+    color: #D8D8D8;
+}
+
+.content-absolute {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 52px;
+    z-index: -1;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#video-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#video-bg > video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1000;
+    opacity: 0.6;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #video-bg > video {
+        height: 300%;
+        top: -100%;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #video-bg > video {
+        width: 300%;
+        left: -100%;
+    }
+}
+
+@supports (object-fit: cover) {
+    #video-bg > video {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.alert {
+    background-color: #222;
+    color: #A26EFF;
+    padding: 5px;
+    margin-bottom: 0px;
+    border: 0px;
+    border-radius: 0px;
+    position: absolute;
+    top: 52px;
+    width: 100%;
+}
+
+.error-color {
+    color: #F25F5F;
+}
+
+.success-color {
+    color: #60FF00;
+}
+
+.form-control::-webkit-input-placeholder { color: #505050; }
+.form-control:-moz-placeholder { color: #505050; }
+.form-control::-moz-placeholder { color: #505050; }
+.form-control:-ms-input-placeholder { color: #505050; }
+
+.spinner {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6) url('/images/spinner.gif') 50% 50% no-repeat;
+}
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .spinner {
+    display: block;
+}
+
+.footer-controls {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-controls * {
+    float: right;
+}
+
+.panel * {
+    color: black;
+}

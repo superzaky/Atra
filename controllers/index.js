@@ -4,7 +4,7 @@ var routes = require(process.env.root + '/config/routes');
 module.exports =
 {
     default: function (req, res, args) {
-        res.render('index', { 'user' : req.session.user });
+        res.sendFile(process.env.root + '/src/app/app.html');
     },
     info: function (req, res, args) {
         res.json({
@@ -15,12 +15,17 @@ module.exports =
         });
     },
     api: function (req, res, args) {
+        var apis = [];
+
         routes.forEach(function (api) {
-            delete api.controller;
-            api.method = api.method.toUpperCase();
-            if (api.resource.indexOf('api') === -1) routes.splice(api, 1);
+            if (api.resource.indexOf('/api') !== -1) {
+                apis.push({
+                    resource: api.resource,
+                    method: api.method.toUpperCase()
+                });
+            }
         });
 
-        res.json(routes);
+        res.json(apis);
     }
 }

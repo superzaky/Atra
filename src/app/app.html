@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app='app' ng-controller='AppCtrl' lang='en'>
+    <head>
+        <!-- meta -->
+        <meta charset='UTF-8'>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+
+        <!-- base -->
+        <base href='/'>
+
+        <!-- title -->
+        <title ng-bind='app.title'>Project Atra</title>
+
+        <!-- external css -->
+        <link type='text/css' rel='stylesheet' href='//fonts.googleapis.com/css?family=Cuprum'/>
+
+        <!-- vendor css -->
+        <link type='text/css' rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css'>
+        <link type='text/css' rel='stylesheet' href='/vendor/font-awesome/css/font-awesome.css'>
+        <link type='text/css' rel='stylesheet' href='/vendor/cropper/dist/cropper.css'>
+        <link type='text/css' rel='stylesheet' href='/vendor/angular-toastr/dist/angular-toastr.css'>
+        <link type='text/css' rel='stylesheet' href='/vendor/angular-loading-bar/build/loading-bar.css' media='all'>
+
+        <!-- local css -->
+        <link type='text/css' rel='stylesheet' href='/assets/css/core.css'>
+        <link type='text/css' rel='stylesheet' href='/assets/css/index.css'>
+        <link type='text/css' rel='stylesheet' href='/assets/css/parallax.css'>
+        <link type='text/css' rel='stylesheet' href='/assets/css/chat.css'>
+        <link type='text/css' rel='stylesheet' href='/assets/css/game.css'>
+        <link type='text/css' rel='stylesheet' href='/assets/css/project.css'>
+    </head>
+    <body>
+        <div ng-include='"/app/_partials/navbar.html"'></div>
+        <div ui-view></div>
+
+        <!-- external js -->
+
+        <!-- vendor js -->
+        <script type='text/javascript' src='/vendor/jquery/dist/jquery.js'></script>
+        <script type='text/javascript' src='/vendor/jquery-ui/jquery-ui.js'></script>
+        <script type='text/javascript' src='/vendor/bootstrap/dist/js/bootstrap.js'></script>
+        <script type='text/javascript' src='/vendor/underscore/underscore.js'></script>
+        <script type='text/javascript' src='/vendor/cropper/dist/cropper.js'></script>
+        <script type='text/javascript' src='/vendor/angular/angular.js'></script>
+        <script type='text/javascript' src='/vendor/angular-bootstrap/ui-bootstrap.js'></script>
+        <script type='text/javascript' src='/vendor/angular-bootstrap/ui-bootstrap-tpls.js'></script>
+        <script type='text/javascript' src='/vendor/angular-ui-router/release/angular-ui-router.js'></script>
+        <script type='text/javascript' src='/vendor/angular-resource/angular-resource.js'></script>
+        <script type='text/javascript' src='/vendor/angular-toastr/dist/angular-toastr.js'></script>
+        <script type='text/javascript' src='/vendor/angular-toastr/dist/angular-toastr.tpls.js'></script>
+        <script type='text/javascript' src='/vendor/angular-animate/angular-animate.js'></script>
+        <script type='text/javascript' src='/vendor/angular-loading-bar/build/loading-bar.js'></script>
+        <script type='text/javascript' src='/vendor/angular-validation-match/dist/angular-validation-match.js'></script>
+        <script type='text/javascript' src='/vendor/angular-sanitize/angular-sanitize.js'></script>
+
+        <!-- local js -->
+        <script type='text/javascript' src='/socket.io/socket.io.js'></script>
+        <script type='text/javascript' src='/assets/javascript/functions.js'></script>
+        <script type='text/javascript' src='/assets/javascript/init.js'></script>
+        <!-- TODO: missing local javascript files still have to be converted to angular directives/controllers -->
+
+        <!-- app js -->
+        <script type='text/javascript' src='/app/app.module.js'></script>
+        <script type='text/javascript' src='/app/app.config.js'></script>
+        <script type='text/javascript' src='/app/app.run.js'></script>
+        <script type='text/javascript' src='/app/app.router.js'></script>
+        <script type='text/javascript' src='/app/app.filter.js'></script>
+        <script type='text/javascript' src='/app/app.controller.js'></script>
+        <script type='text/javascript' src='/app/_partials/modals/modals.module.js'></script>
+        <script type='text/javascript' src='/app/_partials/modals/login/login-modal.controller.js'></script>
+        <script type='text/javascript' src='/app/_partials/modals/project/project-modal.controller.js'></script>
+        <script type='text/javascript' src='/app/home/home.module.js'></script>
+        <script type='text/javascript' src='/app/home/home.router.js'></script>
+        <script type='text/javascript' src='/app/settings/settings.module.js'></script>
+        <script type='text/javascript' src='/app/settings/settings.router.js'></script>
+        <script type='text/javascript' src='/app/settings/settings.controller.js'></script>
+        <script type='text/javascript' src='/app/auth/auth.module.js'></script>
+        <script type='text/javascript' src='/app/auth/auth.factory.js'></script>
+        <script type='text/javascript' src='/app/auth/auth.controller.js'></script>
+        <script type='text/javascript' src='/app/user/user.module.js'></script>
+        <script type='text/javascript' src='/app/user/user.factory.js'></script>
+        <script type='text/javascript' src='/app/project/project.module.js'></script>
+        <script type='text/javascript' src='/app/project/project.router.js'></script>
+        <script type='text/javascript' src='/app/project/project.factory.js'></script>
+        <script type='text/javascript' src='/app/project/project.controller.js'></script>
+    </body>
+</html>

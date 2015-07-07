@@ -1,7 +1,6 @@
 var settings =
 {
     'port' : process.env.PORT || 5000,
-    'view engine' : 'ejs',
     'mongodb' : 'mongodb://atra:6wLC5KuRDUp9ZUGL@ds039271.mongolab.com:39271/atra'
 }
 
