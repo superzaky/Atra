@@ -4,7 +4,8 @@ var fs = require('fs');
 var properties = {
     "name": String,
     "content": String,
-    "image": String
+    "image": String,
+    "vote": parseInt()
 };
 
 var methods = {

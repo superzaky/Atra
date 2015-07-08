@@ -46,6 +46,7 @@
                   <img class='img-responsive project-image' data-image='<%= project.image %>' src='<%= project.image %>'>
                   <p class='text-muted'>Created by <code><%= project.created.user.first_name + ' ' + project.created.user.last_name %></code> at <code><%= project.created.date.toUTCString() %></code></p>
                   <p class='text-muted'>Last modified by <code><%= project.modified.user.first_name + ' ' + project.modified.user.last_name %></code> at <code><%= project.modified.date.toUTCString() %></code></p>
+                  <a href='/projects/favorite/<%= project._id %>'> <div class="trick-card-stat-block text-muted"><span class="fa fa-heart"></span> the_fav_votes </div></a>
                 </li>
               <% }); %>
             </ul>

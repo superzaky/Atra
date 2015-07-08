@@ -1,4 +1,5 @@
 var Project = require(process.env.root + '/models/project');
+var Vote = require(process.env.root + '/models/vote');
 
 module.exports =
 {
@@ -21,6 +22,24 @@ module.exports =
             //geef hier aan dat je van /project url komt om later onderscheidt te maken van /chat url
             //console.log(project._id);
             res.render('project', { 'user' : req.session.user, 'project' : project });
+        });
+    },
+
+    like_project: function (req, res, args) {
+        console.log("work");
+        Project.fetch({
+            "_id": req.params.id
+        }, function (err, doc) {
+            var project = doc;
+
+            project.vote = project.vote + 1 || 0;
+            Vote.user_id=req.session.user._id;
+            Vote.project_id=project._id;
+            Vote.save();
+            
+            project.save(function () {
+                    res.redirect('/projects');             
+            });
         });
     },
 
@@ -64,15 +83,15 @@ module.exports =
             delete req.body.base64;
         } else if (typeof req.files.image != 'undefined') {
             if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
-       		project.setImage(req.files.image);
-    	}
+            project.setImage(req.files.image);
+        }
 
         project.setValues(req.body);
         project.created.user = req.session.user;
         project.modified.user = req.session.user;
 
         if (!project.hasProperties(required)) {
-        	return res.status(412).send('Projects must have the following properties: ' + required.join(', '));
+            return res.status(412).send('Projects must have the following properties: ' + required.join(', '));
         }
 
         Project.fetch({
@@ -106,8 +125,8 @@ module.exports =
                 delete req.body.base64;
             } else if (typeof req.files.image != 'undefined') {
                 if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
-           		project.setImage(req.files.image);
-        	}
+                project.setImage(req.files.image);
+            }
 
             project.setValues(req.body);
             project.modified.user = req.session.user;
