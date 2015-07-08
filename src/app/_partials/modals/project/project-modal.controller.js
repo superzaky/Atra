@@ -4,7 +4,7 @@
     var modals = angular.module('modals');
 
     function ProjectModalCtrl ($scope, $state, $modalInstance, Project, toastr) {
-        Project.current.selected = _.findWhere(Project.current.list, {_id: $state.params._id});
+        Project.current.instance = _.findWhere(Project.current.list, {_id: $state.params._id});
 
         $scope.instance = {
             modal: {
@@ -14,7 +14,7 @@
             },
 
             form: {
-                project: angular.copy(Project.current.selected)
+                project: angular.copy(Project.current.instance)
             },
 
             Project: {
@@ -34,7 +34,7 @@
                 edit: function () {
                     $scope.instance.form.project.$save()
                     .then(function (response) {
-                        angular.extend(Project.current.selected, $scope.instance.form.project);
+                        angular.extend(Project.current.instance, $scope.instance.form.project);
                         toastr.success('Project has successfully been modified', 'Success');
                     }, function (error) {
                         toastr.error(error.data, 'Error code ' + error.status);

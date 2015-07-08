@@ -5,21 +5,27 @@
 
     function Auth ($http) {
         return {
-            login: function (email, password) {
-                return $http.post('/api/login', { 
-                    email: email,
-                    password: password
-                });
+            api: {
+                login: function (email, password) {
+                    return $http.post('/api/login', {
+                        email: email,
+                        password: password
+                    });
+                },
+
+                logout: function () {
+                    return $http.get('/api/logout');
+                },
+
+                getMySession: function () {
+                    return $http.get('/api/sessions/me');
+                }
             },
 
-            logout: function () {
-                return $http.get('/api/logout');
-            },
-
-            getCurrentSession: function () {
-                return $http.get('/api/sessions/me');
+            current: {
+                instance: null
             }
-        };
+        }
     }
 
     auth.factory('Auth', ['$http', Auth]);

@@ -11,7 +11,7 @@
 
             current: {
                 list: [],
-                selected: null
+                instance: null
             }
         }
     }

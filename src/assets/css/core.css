@@ -70,6 +70,19 @@ code {
     transition: top 250ms ease-out 250ms;
 }
 
+.navbar-username {
+    position: absolute;
+    color: white;
+    left: 100px;
+    top: 16px;
+}
+
+@media(max-width:768px) {
+    .navbar-username {
+        left: 122px;
+    }
+}
+
 .navbar-header .fa-home {
     color: #9D9D9D;
     position: absolute;

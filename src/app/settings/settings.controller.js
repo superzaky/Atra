@@ -11,16 +11,12 @@
 
             user: {
                 save: function () {
-                    User.get({_id: $rootScope.session.user._id}, function (user) {
-                        angular.extend(user, $scope.settings.form.user);
-
-                        user.$save().then(function (response) {
-                            toastr.success('You have successfully updated your settings', 'Success');
-                            $rootScope.session.user = angular.fromJson(angular.toJson(response));
-                            delete $rootScope.session.user.password;
-                        }, function (error) {
-                            toastr.error(error.data, 'Error code ' + error.status);
-                        });
+                    User.api.save($scope.settings.form.user).$promise
+                    .then(function (response) {
+                        $rootScope.session.user = response;
+                        toastr.success('You have successfully updated your settings', 'Success');
+                    }, function (error) {
+                        toastr.error(error.data, 'Error code ' + error.status);
                     });
                 }
             }

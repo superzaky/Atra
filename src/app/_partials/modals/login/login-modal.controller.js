@@ -13,11 +13,11 @@
 
             Auth: {
                 login: function () {
-                    Auth.login($scope.instance.form.user.email, $scope.instance.form.user.password)
+                    Auth.api.login($scope.instance.form.user.email, $scope.instance.form.user.password)
                     .then(function (response) {
-                        $rootScope.session = response.data;
+                        $rootScope.session = Auth.current.instance = response.data;
+                        toastr.success('You have successfully signed in', 'Hi ' + response.data.user.first_name + ' ' + response.data.user.last_name);
                         $modalInstance.close();
-                        toastr.success('You have successfully signed in', 'Success');
                     }, function (error) {
                         toastr.error(error.data, 'Error code ' + error.status);
                     });
