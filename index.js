@@ -18,24 +18,17 @@ var sessionMiddleware = session({
     'resave' : false,
     'saveUninitialized' : true
 });
-app.use(multer({ dest: './uploads/' }));
+app.use(multer({ dest: './uploads' }));
 app.use(sessionMiddleware);
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ 'extended' : true }));
-app.use(express.static(__dirname + '/public'));
-app.use(favicon(__dirname + '/public/favicon.ico'));
-app.set('views', __dirname + '/app');
+app.use(express.static(__dirname + '/src'));
+app.use(favicon(__dirname + '/src/assets/images/favicon.ico'));
 process.env.root = __dirname;
 
 
 var settings = require('./config/settings');
 for (var key in settings) app.set(key, settings[key]);
-
-
-app.use(function(req, res, next) {
-    if (!req.session.user && req.url.indexOf('/admin') != -1) return res.redirect('/');
-    next();
-});
 
 
 var routes = require('./config/routes');

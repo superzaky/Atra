@@ -1,0 +1,26 @@
+<main>
+    <div ng-if='session' class='footer-controls'>
+        <button ui-sref='projects.add' type='button' class='btn btn-primary'>Add project</button>
+    </div>
+
+    <div>
+        <ul class='list-unstyled projects-list'>
+            <li ng-repeat='project in projects'>
+                <h2><a ui-sref='projects' tooltip='Under construction'>{{ project.name }}</a></h2>
+                <small ng-if='session'>
+                    <a ng-click='Project.remove(project._id);' href='#'>Delete</a> |
+                    <a ui-sref='projects.edit({_id: project._id})'>Edit</a>
+                </small>
+                <p ta-bind ng-model='project.content'></p>
+                <p class='text-muted'>Created by
+                    <code>{{ project.created.user.first_name }} {{ project.created.user.last_name }}</code> at
+                    <code>{{ project.created.date | date : 'medium' }}</code>
+                </p>
+                <p class='text-muted'>Last modified by
+                    <code>{{ project.modified.user.first_name }} {{ project.modified.user.last_name }}</code> at
+                    <code>{{ project.modified.date | date : 'medium' }}</code>
+                </p>
+            </li>
+        </ul>
+    </div>
+</main>

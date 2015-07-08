@@ -1,0 +1,9 @@
+textarea {
+    resize:vertical;
+}
+
+.projects-list img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}

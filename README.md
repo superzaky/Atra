@@ -14,17 +14,14 @@ Made with node.js and hosted on Heroku
 * [cmder](http://gooseberrycreative.com/cmder/) _includes mysisgit_
 
 ## Setup
-You must first install the required modules with the following command.
+You must first install the required dependencies with the following commands.
 
     npm install
+    bower install
 
 Afterwards run the app like so.
 
-    node index.js
-
-The app will be running at the following url.
-
-    http://localhost:5000
+    node index.js // app by default runs on localhost:5000
 
 You can enable live reloading with grunt.
 

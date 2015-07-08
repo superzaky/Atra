@@ -1,12 +1,14 @@
 {
   "name": "Atra",
   "version": "0.2.0",
-  "description": "Project Atra, a realtime portfolio",
+  "description": "Project Atra",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
+    "bower": "latest",
     "MD5": "1.2.1",
     "body-parser": "1.11.0",
     "ejs": "2.2.4",
@@ -38,7 +40,9 @@
   "keywords": [
     "node",
     "heroku",
-    "express"
+    "express",
+    "angular",
+    "socket.io"
   ],
   "license": "MIT"
 }
