@@ -11,7 +11,10 @@
             </div>
         </div>
         <div class='form-group'>
-            <textarea ng-model='instance.form.project.content' class='form-control' rows='7' placeholder='Content' required='true'></textarea>
+            <text-angular ta-toolbar='[["h1", "h2", "h3", "p", "quote"],
+            ["bold", "italics", "underline", "strikeThrough", "ul", "ol", "redo", "undo"],
+            ["html", "insertImage", "insertLink", "insertVideo", "wordcount", "charcount"]]' 
+            ng-model='instance.form.project.content'></text-angular>
         </div>
         <small>You may use <a href='#' tooltip='No scripts, inputs and so on'>safe html</a> in the content</small>
     </div>

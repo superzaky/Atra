@@ -22,7 +22,8 @@
                 var modal = $modal.open({
                     animation: false,
                     templateUrl: '/app/_partials/modals/project/project-add-modal.html',
-                    controller: 'ProjectModalCtrl'
+                    controller: 'ProjectModalCtrl',
+                    size: 'lg'
                 })
                 .result.finally(function() {
                     $state.go('^');
@@ -38,7 +39,8 @@
                 var modal = $modal.open({
                     animation: false,
                     templateUrl: '/app/_partials/modals/project/project-edit-modal.html',
-                    controller: 'ProjectModalCtrl'
+                    controller: 'ProjectModalCtrl',
+                    size: 'lg'
                 })
                 .result.finally(function() {
                     $state.go('^');

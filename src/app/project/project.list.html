@@ -11,7 +11,7 @@
                     <a ng-click='Project.remove(project._id);' href='#'>Delete</a> |
                     <a ui-sref='projects.edit({_id: project._id})'>Edit</a>
                 </small>
-                <p ng-bind-html='project.content'></p>
+                <p ta-bind ng-model='project.content'></p>
                 <p class='text-muted'>Created by
                     <code>{{ project.created.user.first_name }} {{ project.created.user.last_name }}</code> at
                     <code>{{ project.created.date | date : 'medium' }}</code>
