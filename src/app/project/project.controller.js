@@ -8,7 +8,7 @@
 
         $scope.Project = {
             remove: function (_id) {
-                Project.delete({_id : _id}).$promise.then(function (response) {
+                Project.api.delete({_id : _id}).$promise.then(function (response) {
                     toastr.success('Project has successfully been deleted', 'Success');
                     $scope.projects = _.reject($scope.projects, function (project) {
                         return project._id === _id;
