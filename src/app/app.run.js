@@ -4,6 +4,9 @@
     var app = angular.module('app');
 
     function run ($rootScope, $state, $stateParams, Auth) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+
         var privateStates = [
             'settings',
             'chat',
@@ -11,11 +14,11 @@
             'projects.edit'
         ];
 
-        Auth.getCurrentSession()
+        Auth.api.getMySession()
         .then(function (response) {
-            $rootScope.session = response.data;
+            $rootScope.session = Auth.current.instance = response.data;
         }, function (error) {
-            $rootScope.session = null;
+            $rootScope.session = Auth.current.instance = null;
         }).then(function () {
             if (!$rootScope.session && _.contains(privateStates, $rootScope.toState.name)) {
                 $state.go('home');

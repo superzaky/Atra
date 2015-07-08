@@ -14,11 +14,11 @@
                 <p ng-bind-html='project.content'></p>
                 <p class='text-muted'>Created by
                     <code>{{ project.created.user.first_name }} {{ project.created.user.last_name }}</code> at
-                    <code>{{ project.created.date }}</code>
+                    <code>{{ project.created.date | date : 'medium' }}</code>
                 </p>
                 <p class='text-muted'>Last modified by
                     <code>{{ project.modified.user.first_name }} {{ project.modified.user.last_name }}</code> at
-                    <code>{{ project.modified.date }}</code>
+                    <code>{{ project.modified.date | date : 'medium' }}</code>
                 </p>
             </li>
         </ul>

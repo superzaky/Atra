@@ -10,6 +10,7 @@
             <a ng-if='!session' class='navbar-brand'><img src='/assets/images/logo.png'></a>
             <a ng-if='session' class='navbar-brand' ui-sref='settings'><img src='{{ session.user.image }}'></a>
             <a ui-sref='home'><i class='fa fa-home fa-2x'></i></a>
+            <span class='navbar-username'>{{ session.user.first_name }} {{ session.user.last_name }}</span>
         </div>
 
         <div class='collapse navbar-collapse' id='navbar-collapse-portfolio'>
@@ -17,7 +18,7 @@
                 <li class='dropdown'>
                     <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Utilities<span class='caret'></span></a>
                     <ul class='dropdown-menu' role='menu'>
-                        <li><a ui-sref='chat' tooltip='Under construction' tooltip-placement='bottom'>Chat</a></li>
+                        <li><a ui-sref='chat' tooltip='Under construction' tooltip-placement='left'>Chat</a></li>
                         <li><a ui-sref='projects'>Projects</a></li>
                     </ul>
                 </li>
