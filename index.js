@@ -25,7 +25,7 @@ app.use(multer({ dest: './uploads' }));
 app.use(sessionMiddleware);
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ 'extended' : true }));
-app.use(express.static(__dirname + config.public_folder));
+app.use(express.static(__dirname + config.public_folder, { maxAge: 86400000 }));
 app.use(favicon(__dirname + config.public_folder + '/assets/images/favicon.ico'));
 process.env.root = __dirname;
 

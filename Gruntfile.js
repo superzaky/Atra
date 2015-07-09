@@ -26,8 +26,17 @@ module.exports = function (grunt) {
             }
         },
 
+        rev: {
+            files: {
+                src: ['build/**.{js,css}', 'build/app/*.{js,css}']
+            }
+        },
+
         usemin: {
-            html: ['build/app/app.html']
+            html: ['build/app/app.html'],
+            options: {
+                assetsDirs: ['build']
+            }
         },
 
         watch: {
@@ -59,6 +68,7 @@ module.exports = function (grunt) {
         'concat',
         'uglify',
         'cssmin',
+        'rev',
         'usemin'
     ]);
 };
