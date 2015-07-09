@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var multer = require('multer');
 var favicon = require('serve-favicon');
 var session = require('express-session')
@@ -10,6 +11,7 @@ var io = require('socket.io')(server);
 var fs = require('fs');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var config = require('./config/settings');
 var clients = [];
 
 
@@ -18,17 +20,17 @@ var sessionMiddleware = session({
     'resave' : false,
     'saveUninitialized' : true
 });
+app.use(compression());
 app.use(multer({ dest: './uploads' }));
 app.use(sessionMiddleware);
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ 'extended' : true }));
-app.use(express.static(__dirname + '/src'));
-app.use(favicon(__dirname + '/src/assets/images/favicon.ico'));
+app.use(express.static(__dirname + config.public_folder));
+app.use(favicon(__dirname + config.public_folder + '/assets/images/favicon.ico'));
 process.env.root = __dirname;
 
 
-var settings = require('./config/settings');
-for (var key in settings) app.set(key, settings[key]);
+for (var key in config) app.set(key, config[key]);
 
 
 var routes = require('./config/routes');

@@ -11,18 +11,21 @@
         <!-- title -->
         <title ng-bind='app.title'>Project Atra</title>
 
-        <!-- external css -->
-        <link type='text/css' rel='stylesheet' href='//fonts.googleapis.com/css?family=Cuprum'/>
-
         <!-- vendor css -->
-        <link type='text/css' rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css'>
-        <link type='text/css' rel='stylesheet' href='/vendor/font-awesome/css/font-awesome.css'>
+        <!-- build:css /vendor.css -->
         <link type='text/css' rel='stylesheet' href='/vendor/cropper/dist/cropper.css'>
         <link type='text/css' rel='stylesheet' href='/vendor/angular-toastr/dist/angular-toastr.css'>
         <link type='text/css' rel='stylesheet' href='/vendor/angular-loading-bar/build/loading-bar.css' media='all'>
         <link type='text/css' rel='stylesheet' href='/vendor/textAngular/dist/textAngular.css'>
+        <!-- endbuild -->
+
+        <!-- external css -->
+        <link type='text/css' rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+        <link type='text/css' rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+        <link type='text/css' rel='stylesheet' href='//fonts.googleapis.com/css?family=Cuprum'/>
 
         <!-- local css -->
+        <!-- build:css /style.css -->
         <link type='text/css' rel='stylesheet' href='/assets/css/core.css'>
         <link type='text/css' rel='stylesheet' href='/assets/css/index.css'>
         <link type='text/css' rel='stylesheet' href='/assets/css/parallax.css'>
@@ -30,17 +33,16 @@
         <link type='text/css' rel='stylesheet' href='/assets/css/game.css'>
         <link type='text/css' rel='stylesheet' href='/assets/css/project.css'>
         <link type='text/css' rel='stylesheet' href='/assets/css/loading-bar.css'>
+        <!-- endbuild -->
     </head>
     <body>
         <div ng-include='"/app/_partials/navbar.html"'></div>
         <div ui-view></div>
 
-        <!-- external js -->
-
         <!-- vendor js -->
+        <!-- build:js /vendor.js -->
         <script type='text/javascript' src='/vendor/jquery/dist/jquery.js'></script>
         <script type='text/javascript' src='/vendor/jquery-ui/jquery-ui.js'></script>
-        <script type='text/javascript' src='/vendor/bootstrap/dist/js/bootstrap.js'></script>
         <script type='text/javascript' src='/vendor/underscore/underscore.js'></script>
         <script type='text/javascript' src='/vendor/cropper/dist/cropper.js'></script>
         <script type='text/javascript' src='/vendor/angular/angular.js'></script>
@@ -56,14 +58,20 @@
         <script type='text/javascript' src='/vendor/textAngular/dist/textAngular-rangy.min.js'></script>
         <script type='text/javascript' src='/vendor/textAngular/dist/textAngular-sanitize.min.js'></script>
         <script type='text/javascript' src='/vendor/textAngular/dist/textAngular.min.js'></script>
+        <!-- endbuild -->
+
+        <!-- external js -->
+        <script type='text/javascript' src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
         <!-- local js -->
         <script type='text/javascript' src='/socket.io/socket.io.js'></script>
+        <!-- build:js /javascript.js -->
         <script type='text/javascript' src='/assets/javascript/functions.js'></script>
         <script type='text/javascript' src='/assets/javascript/init.js'></script>
-        <!-- TODO: missing local javascript files still have to be converted to angular directives/controllers -->
+        <!-- endbuild -->
 
         <!-- app js -->
+        <!-- build:js /app/app.js -->
         <script type='text/javascript' src='/app/app.module.js'></script>
         <script type='text/javascript' src='/app/app.config.js'></script>
         <script type='text/javascript' src='/app/app.run.js'></script>
@@ -87,5 +95,6 @@
         <script type='text/javascript' src='/app/project/project.router.js'></script>
         <script type='text/javascript' src='/app/project/project.factory.js'></script>
         <script type='text/javascript' src='/app/project/project.controller.js'></script>
+        <!-- endbuild -->
     </body>
 </html>
