@@ -1,10 +1,11 @@
 var pkg = require(process.env.root + '/package.json');
 var routes = require(process.env.root + '/config/routes');
+var config = require(process.env.root + '/config/settings');
 
 module.exports =
 {
     default: function (req, res, args) {
-        res.sendFile(process.env.root + '/src/app/app.html');
+        res.sendFile(process.env.root + config.public_folder + '/app.html');
     },
     info: function (req, res, args) {
         res.json({
