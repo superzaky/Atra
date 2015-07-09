@@ -5,7 +5,7 @@ var config = require(process.env.root + '/config/settings');
 module.exports =
 {
     default: function (req, res, args) {
-        res.sendFile(process.env.root + config.public_folder + '/app.html');
+        res.sendFile(process.env.root + config.index_file);
     },
     info: function (req, res, args) {
         res.json({
