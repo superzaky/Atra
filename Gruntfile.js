@@ -4,8 +4,8 @@ module.exports = function (grunt) {
 
         copy: {
             app: {
-                src: '**/*.html',
-                dest: 'build/app',
+                src: 'app.html',
+                dest: 'build',
                 cwd: 'src/app',
                 expand: true
             },
@@ -26,14 +26,26 @@ module.exports = function (grunt) {
             }
         },
 
+        ngtemplates: {
+            app: {
+                src: 'app/*/**/*.html',
+                dest: 'build/app.js',
+                cwd: 'src',
+                options: {
+                    usemin: 'app.js',
+                    prefix: '/'
+                }
+            }
+        },
+
         rev: {
             files: {
-                src: ['build/**.{js,css}', 'build/app/*.{js,css}']
+                src: ['build/**.{js,css}']
             }
         },
 
         usemin: {
-            html: ['build/app/app.html'],
+            html: ['build/app.html'],
             options: {
                 assetsDirs: ['build']
             }
@@ -59,12 +71,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-rev');
     grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('build',[
         'clean',
         'copy',
         'useminPrepare',
+        'ngtemplates',
         'concat',
         'uglify',
         'cssmin',
