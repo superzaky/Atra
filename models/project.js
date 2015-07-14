@@ -5,7 +5,7 @@ var properties = {
     "name": String,
     "content": String,
     "image": String,
-    "vote": parseInt()
+    "total_votes": parseInt()
 };
 
 var methods = {

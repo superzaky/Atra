@@ -4,6 +4,8 @@
     var project = angular.module('project');
 
     function router ($stateProvider) {
+
+        
         $stateProvider.state('projects', {
             url: '/projects',
             templateUrl: '/app/project/project.list.html',
@@ -48,6 +50,13 @@
                 });
             }]
         });
+
+        // $stateProvider.state('projects.votes', {
+        //     url: '/vote/:_id',
+        //     templateUrl: '/app/project/project.list.html',
+        //     controller: 'ProjectCtrl',
+        //     method: 'vote'
+        // });
     }
 
     project.config(['$stateProvider', router]);

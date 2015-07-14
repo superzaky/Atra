@@ -2,7 +2,6 @@
     'use strict';
 
     var project = angular.module('project');
-
     function ProjectCtrl ($rootScope, $scope, $state, $modal, toastr, Project, projects) {
         $scope.projects = Project.current.list = projects;
 
@@ -14,6 +13,12 @@
                         return project._id === _id;
                     });
                 });
+            },
+
+            vote: function (_id) {
+                    Project.api.lol({_id : _id}).$promise.then(function (response) {
+                        toastr.success('Project has successfully been voted', 'Success');
+                    });
             }
         };
     }

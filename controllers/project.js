@@ -25,14 +25,14 @@ module.exports =
         });
     },
 
-    like_project: function (req, res, args) {
-        console.log("work");
+    vote_project: function (req, res, args) {
+        console.log("vote_project");
         Project.fetch({
             "_id": req.params.id
         }, function (err, doc) {
             var project = doc;
 
-            project.vote = project.vote + 1 || 0;
+            project.total_votes = project.total_votes + 1 || 0;
             Vote.user_id=req.session.user._id;
             Vote.project_id=project._id;
             Vote.save();
@@ -71,40 +71,49 @@ module.exports =
     },
 
     add: function (req, res, args) {
-        if (typeof req.session.user === 'undefined' || req.session.user === null) {
-            return res.status(401).send('Unauthorized');
-        }
+        console.log('zaky add');
+        console.log(req.body);
         
-        var project = new Project();
-        var required = ['name'];
+       // if(typeof req.body !== 'undefined')
 
-        if (typeof req.body.base64 != 'undefined') {
-            project.setImage(req.body.base64);
-            delete req.body.base64;
-        } else if (typeof req.files.image != 'undefined') {
-            if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
-            project.setImage(req.files.image);
-        }
+            if (typeof req.session.user === 'undefined' || req.session.user === null) {
+                return res.status(401).send('Unauthorized');
+            }
+            
+            var project = new Project();
+            var required = ['name'];
 
-        project.setValues(req.body);
-        project.created.user = req.session.user;
-        project.modified.user = req.session.user;
+            if (typeof req.body.base64 != 'undefined') {
+                project.setImage(req.body.base64);
+                delete req.body.base64;
+            } else if (typeof req.files.image != 'undefined') {
+                if (req.files.image['size'] > 2000000) return res.status(412).send('Your image file was larger than 2MB');
+                project.setImage(req.files.image);
+            }
 
-        if (!project.hasProperties(required)) {
-            return res.status(412).send('Projects must have the following properties: ' + required.join(', '));
-        }
+            project.setValues(req.body);
+            project.created.user = req.session.user;
+            project.modified.user = req.session.user;
 
-        Project.fetch({
-            "name": project.name
-        }, function (err, doc) {
-            if (doc !== null) return res.status(412).send('Project with name ' + project.name + ' already exists');
-            project.save(function () {
-                res.status(201).json(project.sanitize(['__v']));
+            if (!project.hasProperties(required)) {
+                return res.status(412).send('Projects must have the following properties: ' + required.join(', '));
+            }
+
+            Project.fetch({
+                "name": project.name
+            }, function (err, doc) {
+                if (doc !== null) return res.status(412).send('Project with name ' + project.name + ' already exists');
+                project.save(function () {
+                    res.status(201).json(project.sanitize(['__v']));
+                });
             });
-        });
     },
 
     update: function (req, res, args) {
+
+        console.log('updatelol33333');
+        console.log(req.body);
+        console.log('updatelol1');
         if (typeof req.session.user === 'undefined' || req.session.user === null) {
             return res.status(401).send('Unauthorized');
         }
@@ -147,6 +156,7 @@ module.exports =
     },
 
     delete: function (req, res, args) {
+        console.log('zaky22');
         Project.fetch({
             "_id": req.params.id
         }, function (err, doc) {

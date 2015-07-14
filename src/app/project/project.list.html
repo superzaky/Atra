@@ -19,6 +19,7 @@
                 <p class='text-muted'>Last modified by
                     <code>{{ project.modified.user.first_name }} {{ project.modified.user.last_name }}</code> at
                     <code>{{ project.modified.date | date : 'medium' }}</code>
+                    <a ng-click='Project.vote(project._id);' href='#'> <div class="trick-card-stat-block text-muted"><span class="glyphicon glyphicon-thumbs-up"></span> the_fav_votes </div></a>
                 </p>
             </li>
         </ul>
