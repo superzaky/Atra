@@ -73,8 +73,6 @@ module.exports =
     add: function (req, res, args) {
         console.log('zaky add');
         console.log(req.body);
-        
-       // if(typeof req.body !== 'undefined')
 
             if (typeof req.session.user === 'undefined' || req.session.user === null) {
                 return res.status(401).send('Unauthorized');
@@ -114,6 +112,12 @@ module.exports =
         console.log('updatelol33333');
         console.log(req.body);
         console.log('updatelol1');
+
+        if(typeof req.body.like !== 'undefined'){
+            //WORKS already tested.
+            console.log('hallo like');
+        }
+
         if (typeof req.session.user === 'undefined' || req.session.user === null) {
             return res.status(401).send('Unauthorized');
         }

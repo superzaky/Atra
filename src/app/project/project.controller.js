@@ -15,9 +15,15 @@
                 });
             },
 
-            vote: function (_id) {
-                    Project.api.lol({_id : _id}).$promise.then(function (response) {
-                        toastr.success('Project has successfully been voted', 'Success');
+            like: function (_id) {
+                    Project.api.save({_id : _id, like : true}).$promise.then(function (response) {
+                        toastr.success('Project has successfully been liked', 'Success');
+                    });
+            },
+
+            dislike: function (_id) {
+                    Project.api.save({_id : _id, like : false}).$promise.then(function (response) {
+                        toastr.success('Project has successfully been disliked', 'Success');
                     });
             }
         };
